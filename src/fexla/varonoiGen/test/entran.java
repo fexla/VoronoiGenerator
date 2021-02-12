@@ -2,8 +2,6 @@ package fexla.varonoiGen.test;
 
 import fexla.varonoiGen.*;
 
-import java.util.Map;
-
 /**
  * @author ：fexla
  * @description：TODO
@@ -12,8 +10,8 @@ import java.util.Map;
 public class entran {
     public static void main(String[] args) {
         Vector2Dint.type=CalculateType.CHEBYSHEV;
-        Pic p = new Pic("fexla".hashCode());
-        p.initialRoots(new GeneratorUseDataNum(1), 60, 30, 4,8);
+        Diagram p = new Diagram("fexla".hashCode());
+        p.initialRoots(new GeneratorUseDataNum(1), 60, 30, 2,8);
         Vector2Dint v = new Vector2Dint(0, 0);
 
         for (int yi = 0; yi < 30; yi++) {
