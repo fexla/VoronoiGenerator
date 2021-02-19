@@ -18,15 +18,6 @@ public class GeneratorUseDataNum extends PointRootGenerator {
     }
 
     public GeneratorUseDataNum(Diagram diagram) {
-        super(diagram, (pos, seed) -> new DataOfNum(GeneratorUseDataNum.getSeed(pos, seed)));
-    }
-
-    @Override
-    public PointRoot gen(Vector2Dint pos, long seed, int level, int unitLength) {
-        PointRoot res = super.gen(pos, seed, level, unitLength);
-        if (level == getDiagram().getLayerNum()) {
-            res.setData(new DataOfNum(getSeed(pos, seed)));
-        }
-        return res;
+        super(diagram, (pos, seed) -> new DataOfNum(getSeed(pos, seed)));
     }
 }
