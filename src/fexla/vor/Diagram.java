@@ -36,13 +36,19 @@ public class Diagram {
 
     }
 
-    //a表示长度（x的范围0~a），b表示宽度（y的范围0~b）
-    public void initialDiagram(PointRootGenerator gen, int a, int b, int... lenth) {
-        int num = lenth.length;
+    /**
+     * 初始化图像
+     * @param gen 根点生成器
+     * @param width 表示宽度（x的范围0~a）
+     * @param height 表示长度（y的范围0~b）
+     * @param unitLen 表示各层的单元格边长，unitLen[0]为最低层
+     */
+    public void initialDiagram(PointRootGenerator gen, int width, int height, int... unitLen) {
+        int num = unitLen.length;
         layerNum = num;
         layers = new RootLayer[num];
         for (int i = num - 1; i >= 0; i--) {
-            layers[i] = new RootLayer(lenth[i], i, seed, gen);
+            layers[i] = new RootLayer(unitLen[i], i, seed, gen);
 
         }
     }
