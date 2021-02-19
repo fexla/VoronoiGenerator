@@ -1,4 +1,4 @@
-package fexla.varonoiGen;
+package fexla.vor;
 
 import java.util.HashMap;
 import java.util.Map;

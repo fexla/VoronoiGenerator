@@ -1,4 +1,4 @@
-package fexla.varonoiGen;
+package fexla.vor;
 
 /**
  * @author ：fexla

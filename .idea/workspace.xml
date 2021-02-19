@@ -20,16 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f1f3aa9-f6d9-43af-9e12-114355d0532c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/fexla/varonoiGen/RootDataGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator-Core/fexla/varonoiGen/PointRootGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator-Core/fexla/varonoiGen/PointRootGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator-Core/fexla/varonoiGen/test/GeneratorUseDataNum.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator-Core/fexla/varonoiGen/test/GeneratorUseDataNum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator-Core/fexla/varonoiGen/test/entran.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator-Core/fexla/varonoiGen/test/entran.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fexla/varonoiGen/Diagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/varonoiGen/Diagram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fexla/varonoiGen/PointRootGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/varonoiGen/PointRootGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fexla/varonoiGen/RootGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/varonoiGen/RootLayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fexla/varonoiGen/test/GeneratorUseDataNum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/varonoiGen/test/GeneratorUseDataNum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fexla/varonoiGen/test/entran.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/varonoiGen/test/entran.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +57,11 @@
   </component>
   <component name="RunManager">
     <configuration name="entran" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="fexla.varonoiGen.test.entran" />
+      <option name="MAIN_CLASS_NAME" value="fexla.vor.test.entran" />
       <module name="VoronoiGenerator-Core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fexla.varonoiGen.test.*" />
+          <option name="PATTERN" value="fexla.vor.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
