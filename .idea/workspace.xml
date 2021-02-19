@@ -19,29 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f1f3aa9-f6d9-43af-9e12-114355d0532c" name="Default Changelist" comment="correct some name and the test code.">
-      <change beforePath="$PROJECT_DIR$/../.idea/VoronoiGenerator-Core.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VoronoiGenerator-Core.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/VoronoiGenerator-Core/fexla/varonoiGen/Pic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/VoronoiGenerator-Core/fexla/varonoiGen/RootGroup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/CalculateType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/Data.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/Diagram.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/Point.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/PointRoot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/PointRootGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/RootDataGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/RootLayer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/Vector2D.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/Vector2Dint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/test/DataOfNum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/test/GeneratorUseDataNum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/test/entran.java" beforeDir="false" />
+    <list default="true" id="7f1f3aa9-f6d9-43af-9e12-114355d0532c" name="Default Changelist" comment="correct the test code.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fexla/vor/Diagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/Diagram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fexla/vor/test/entran.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/test/entran.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +37,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1oO0BNLet31X3pTDZRUTikdPCI3" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -90,6 +71,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="lua.app" factoryName="Lua Application">
+      <option name="program" value="lua.exe" />
+      <option name="file" value="" />
+      <option name="workingDir" value="$PROJECT_DIR$/src" />
+      <option name="debuggerType" value="1" />
+      <option name="params" value="" />
+      <option name="charset" value="UTF-8" />
+      <option name="showConsole" value="true" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.entran" />
@@ -114,14 +105,7 @@
       <option name="project" value="LOCAL" />
       <updated>1613738252203</updated>
     </task>
-    <task id="LOCAL-00002" summary="correct some name and the test code.">
-      <created>1613739207279</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1613739207279</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,8 +122,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="correct the test code." />
-    <MESSAGE value="correct some name and the test code." />
-    <option name="LAST_COMMIT_MESSAGE" value="correct some name and the test code." />
+    <option name="LAST_COMMIT_MESSAGE" value="correct the test code." />
   </component>
   <component name="WindowStateProjectService">
     <state x="313" y="0" key="#Project_Structure" timestamp="1613700445490">
@@ -162,38 +145,34 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="262" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613699378317" />
-    <state x="689" y="218" key="FileChooserDialogImpl" timestamp="1613740895204">
+    <state x="689" y="218" key="FileChooserDialogImpl" timestamp="1613700442412">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="689" y="218" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1613740895204" />
-    <state width="1868" height="479" key="GridCell.Tab.0.bottom" timestamp="1613747928625">
+    <state x="689" y="218" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1613700442412" />
+    <state width="1868" height="309" key="GridCell.Tab.0.bottom" timestamp="1613739165562">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="479" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613747928625" />
-    <state width="1868" height="479" key="GridCell.Tab.0.center" timestamp="1613747928625">
+    <state width="1868" height="309" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613739165562" />
+    <state width="1868" height="309" key="GridCell.Tab.0.center" timestamp="1613739165561">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="479" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613747928625" />
-    <state width="1868" height="479" key="GridCell.Tab.0.left" timestamp="1613747928625">
+    <state width="1868" height="309" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613739165561" />
+    <state width="1868" height="309" key="GridCell.Tab.0.left" timestamp="1613739165561">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="479" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613747928625" />
-    <state width="1868" height="479" key="GridCell.Tab.0.right" timestamp="1613747928625">
+    <state width="1868" height="309" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613739165561" />
+    <state width="1868" height="309" key="GridCell.Tab.0.right" timestamp="1613739165561">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="479" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613747928625" />
-    <state x="345" y="0" key="SettingsEditor" timestamp="1613740869120">
+    <state width="1868" height="309" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613739165561" />
+    <state x="345" y="0" key="SettingsEditor" timestamp="1613738592231">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="345" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1613740869120" />
+    <state x="345" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1613738592231" />
     <state x="453" y="189" key="Vcs.Push.Dialog.v2" timestamp="1613738715954">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="453" y="189" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1613738715954" />
-    <state x="170" y="52" key="new project wizard" timestamp="1613741636253">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="170" y="52" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1613741636253" />
     <state x="537" y="240" key="run.anything.popup" timestamp="1613704368029">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
