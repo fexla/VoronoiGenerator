@@ -2,7 +2,7 @@ package fexla.vor;
 
 /**
  * @author ：fexla
- * @description：TODO
+ * @description：根点
  * @date ：2021/2/8 18:31
  */
 public class PointRoot extends Point {

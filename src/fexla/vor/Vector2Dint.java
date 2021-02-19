@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * @author ：fexla
- * @description：TODO
+ * @description：使用int记录数值的2维向量
  * @date ：2021/2/8 18:32
  */
 public class Vector2Dint {

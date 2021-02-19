@@ -21,6 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7f1f3aa9-f6d9-43af-9e12-114355d0532c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fexla/vor/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/Point.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fexla/vor/PointRoot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/PointRoot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fexla/vor/PointRootGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/PointRootGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fexla/vor/Vector2Dint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/Vector2Dint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

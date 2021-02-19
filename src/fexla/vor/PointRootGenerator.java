@@ -5,7 +5,7 @@ import java.util.Random;
 
 /**
  * @author ：fexla
- * @description：TODO
+ * @description：根点生成器。
  * @date ：2021/2/8 19:44
  */
 public class PointRootGenerator {

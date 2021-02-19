@@ -2,7 +2,7 @@ package fexla.vor;
 
 /**
  * @author ：fexla
- * @description：表示点
+ * @description：点
  * @date ：2021/2/8 18:31
  */
 public abstract class Point {
