@@ -1,10 +1,6 @@
 package fexla.varonoiGen.test;
 
-import fexla.varonoiGen.PointRoot;
-import fexla.varonoiGen.PointRootGenerator;
-import fexla.varonoiGen.Vector2Dint;
-
-import java.util.Random;
+import fexla.varonoiGen.*;
 
 /**
  * @author ：fexla
@@ -12,19 +8,25 @@ import java.util.Random;
  * @date ：2021/2/8 20:34
  */
 public class GeneratorUseDataNum extends PointRootGenerator {
-    int maxLevel;
-    static int num =10;
+    static final int minNum = 21;
+    static final int maxNum = 126;
+
+    private static int getSeed(Vector2Dint pos, long seed) {
+        int x = pos.x, y = pos.y;
+        int num = (int) ((seed ^ x) % (1 << 16) + (seed ^ y) << 16);
+        return minNum + num % (maxNum-minNum+1);
+    }
+
+    public GeneratorUseDataNum(Diagram diagram) {
+        super(diagram, (pos, seed) -> new DataOfNum(GeneratorUseDataNum.getSeed(pos, seed)));
+    }
 
     @Override
     public PointRoot gen(Vector2Dint pos, long seed, int level, int unitLength) {
         PointRoot res = super.gen(pos, seed, level, unitLength);
-        if (level == maxLevel) {
-            res.setData(new DataOfNum(num++));
+        if (level == getDiagram().getLayerNum()) {
+            res.setData(new DataOfNum(getSeed(pos, seed)));
         }
         return res;
-    }
-
-    public GeneratorUseDataNum(int maxLevel) {
-        this.maxLevel = maxLevel;
     }
 }

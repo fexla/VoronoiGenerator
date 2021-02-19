@@ -1,7 +1,5 @@
 package fexla.varonoiGen;
 
-import java.awt.*;
-
 /**
  * @author ：fexla
  * @description：Voronoi图
@@ -9,7 +7,12 @@ import java.awt.*;
  */
 public class Diagram {
     private long seed;
-    private RootGroup groups[];
+    private RootLayer layers[];
+    private int layerNum = -1;//层级数量，未生成时为-1
+
+    public Diagram(long seed) {
+        this.seed = seed;
+    }
 
     //返回该点最近的根点数据
     public Data getPointData(Vector2Dint pos, int level) {
@@ -18,7 +21,7 @@ public class Diagram {
     }
 
     public PointRoot getClosestRoot(Vector2Dint pos, int level) {
-        PointRoot[] roots = groups[level].getRootSq(pos);
+        PointRoot[] roots = layers[level].getRootSq(pos);
         double min = Double.MAX_VALUE;
         PointRoot closest = null;
         for (int i = 0; i < 9; i++) {
@@ -34,41 +37,22 @@ public class Diagram {
     }
 
     //a表示长度（x的范围0~a），b表示宽度（y的范围0~b）
-    public void initialRoots(PointRootGenerator gen, int a, int b, int... lenth) {
+    public void initialDiagram(PointRootGenerator gen, int a, int b, int... lenth) {
         int num = lenth.length;
-        groups = new RootGroup[num];
+        layerNum = num;
+        layers = new RootLayer[num];
         for (int i = num - 1; i >= 0; i--) {
-            groups[i] = new RootGroup(lenth[i], i, seed, gen);
+            layers[i] = new RootLayer(lenth[i], i, seed, gen);
 
-        }
-        for (int i = num - 2; i >= 0; i--) {
-            RootGroup lowerg;
-            lowerg = groups[i];
-            int ll = lenth[i];
-            for (int yi = -ll; yi <= b + ll; yi += ll) {
-                for (int xi = -ll; xi <= a + ll; xi += ll) {
-//                    System.out.println(1);
-                    Vector2Dint pos = new Vector2Dint(xi, yi);
-                    PointRoot root = lowerg.getRoot(pos);
-                    PointRoot father = getClosestRoot(root.getPos(), i + 1);
-                    root.setFather(father);
-                    root.setData(father.
-                            getData().
-                            nextData());
-                }
-            }
         }
     }
 
-    public Diagram(long seed) {
-        this.seed = seed;
-    }
 
     public long getSeed() {
         return seed;
     }
 
-    public RootGroup[] getGroups() {
-        return groups;
+    public int getLayerNum() {
+        return layerNum;
     }
 }
