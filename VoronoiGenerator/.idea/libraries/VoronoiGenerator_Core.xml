@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="VoronoiGenerator-Core">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
