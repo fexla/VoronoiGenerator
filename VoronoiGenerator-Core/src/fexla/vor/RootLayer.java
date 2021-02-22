@@ -13,6 +13,7 @@ public class RootLayer {
     private int level;
     private long seed;
     private Map<Vector2Dint, PointRoot> roots;
+    private CalculateType type=CalculateType.EUCLIDEAN;
     PointRootGenerator generator;
 
     //输入图的坐标返回该坐标对应的在这一组中的根点对象
@@ -54,5 +55,13 @@ public class RootLayer {
 
     public Map<Vector2Dint, PointRoot> getRoots() {
         return roots;
+    }
+
+    public CalculateType getType() {
+        return type;
+    }
+
+    public void setType(CalculateType type) {
+        this.type = type;
     }
 }

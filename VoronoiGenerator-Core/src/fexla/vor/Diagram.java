@@ -21,12 +21,13 @@ public class Diagram {
     }
 
     public PointRoot getClosestRoot(Vector2Dint pos, int level) {
-        PointRoot[] roots = layers[level].getRootSq(pos);
+        RootLayer layer = layers[level];
+        PointRoot[] roots = layer.getRootSq(pos);
         double min = Double.MAX_VALUE;
         PointRoot closest = null;
         for (int i = 0; i < 9; i++) {
             Vector2Dint pos2 = roots[i].getPos();
-            double dis = Vector2Dint.dist(pos, pos2);
+            double dis = Vector2Dint.dist(pos, pos2, layer.getType());
             if (dis < min) {
                 min = dis;
                 closest = roots[i];
@@ -38,9 +39,10 @@ public class Diagram {
 
     /**
      * 初始化图像
-     * @param gen 根点生成器
-     * @param width 表示宽度（x的范围0~a）
-     * @param height 表示长度（y的范围0~b）
+     *
+     * @param gen     根点生成器
+     * @param width   表示宽度（x的范围0~a）
+     * @param height  表示长度（y的范围0~b）
      * @param unitLen 表示各层的单元格边长，unitLen[0]为最低层
      */
     public void initialDiagram(PointRootGenerator gen, int width, int height, int... unitLen) {

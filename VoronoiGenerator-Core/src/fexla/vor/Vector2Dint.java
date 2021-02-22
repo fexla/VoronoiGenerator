@@ -8,7 +8,6 @@ import java.util.Objects;
  * @date ：2021/2/8 18:32
  */
 public class Vector2Dint {
-    public static CalculateType type = CalculateType.EUCLIDEAN;
     public int x;
     public int y;
 
@@ -18,13 +17,13 @@ public class Vector2Dint {
     }
 
     //距离
-    public static double dist(Vector2Dint v1, Vector2Dint v2) {
+    public static double dist(Vector2Dint v1, Vector2Dint v2, CalculateType type) {
         int a, b;
         a = v1.x - v2.x;
         b = v1.y - v2.y;
         switch (type) {
             case EUCLIDEAN:
-                return a * a + b * b;
+                return Math.sqrt(a * a + b * b);
             case CHEBYSHEV:
                 return a > b ? a : b;
             case MANHATTAN:
@@ -33,15 +32,10 @@ public class Vector2Dint {
 
         return 0;
     }
-//
-//    //距离平方
-//    public static int distSquare(Vector2Dint v1, Vector2Dint v2) {
-//        int a, b;
-//        a = v1.x - v2.x;
-//        b = v1.y - v2.y;
-//
-//        return a * a + b * b;
-//    }
+
+    public static double dist(Vector2Dint v1, Vector2Dint v2) {
+        return dist(v1, v2, CalculateType.EUCLIDEAN);
+    }
 
     @Override
     public boolean equals(Object o) {

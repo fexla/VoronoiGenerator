@@ -20,28 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d75f487-605b-4598-9fc3-301ac46fcee6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/VoronoiGenerator-Core.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VoronoiGenerator-Core.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/VoronoiGenerator-Core/fexla/varonoiGen/Pic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/VoronoiGenerator-Core/fexla/varonoiGen/RootGroup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/CalculateType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/Data.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/Diagram.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/Point.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/PointRoot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/PointRootGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/RootDataGenerator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/RootLayer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/Vector2D.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/Vector2Dint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/test/DataOfNum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/test/GeneratorUseDataNum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/fexla/vor/test/entran.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core/fexla/vor/Diagram.class" beforeDir="false" afterPath="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core/fexla/vor/Diagram.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core/fexla/vor/RootLayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core/fexla/vor/RootLayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core/fexla/vor/Vector2Dint$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core/fexla/vor/Vector2Dint$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core/fexla/vor/Vector2Dint.class" beforeDir="false" afterPath="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core/fexla/vor/Vector2Dint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core/fexla/vor/test/entran.class" beforeDir="false" afterPath="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core/fexla/vor/test/entran.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VoronoiGenerator-Core/src/fexla/vor/Diagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/../VoronoiGenerator-Core/src/fexla/vor/Diagram.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VoronoiGenerator-Core/src/fexla/vor/RootLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../VoronoiGenerator-Core/src/fexla/vor/RootLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VoronoiGenerator-Core/src/fexla/vor/Vector2Dint.java" beforeDir="false" afterPath="$PROJECT_DIR$/../VoronoiGenerator-Core/src/fexla/vor/Vector2Dint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../VoronoiGenerator-Core/src/fexla/vor/test/entran.java" beforeDir="false" afterPath="$PROJECT_DIR$/../VoronoiGenerator-Core/src/fexla/vor/test/entran.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +55,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core" />
@@ -152,22 +141,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="164" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1613751095832" />
-    <state width="1868" height="143" key="GridCell.Tab.0.bottom" timestamp="1613750855596">
+    <state width="1868" height="143" key="GridCell.Tab.0.bottom" timestamp="1613803122678">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="143" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613750855596" />
-    <state width="1868" height="143" key="GridCell.Tab.0.center" timestamp="1613750855596">
+    <state width="1868" height="143" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1613803122678" />
+    <state width="1868" height="143" key="GridCell.Tab.0.center" timestamp="1613803122678">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="143" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613750855596" />
-    <state width="1868" height="143" key="GridCell.Tab.0.left" timestamp="1613750855596">
+    <state width="1868" height="143" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1613803122678" />
+    <state width="1868" height="143" key="GridCell.Tab.0.left" timestamp="1613803122678">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="143" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613750855596" />
-    <state width="1868" height="143" key="GridCell.Tab.0.right" timestamp="1613750855596">
+    <state width="1868" height="143" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1613803122678" />
+    <state width="1868" height="143" key="GridCell.Tab.0.right" timestamp="1613803122678">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="143" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613750855596" />
+    <state width="1868" height="143" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1613803122678" />
     <state x="533" y="161" key="NewModule_or_Project.wizard" timestamp="1613750417876">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

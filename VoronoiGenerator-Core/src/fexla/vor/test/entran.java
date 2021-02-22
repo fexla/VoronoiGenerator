@@ -9,7 +9,6 @@ import fexla.vor.*;
  */
 public class entran {
     public static void main(String[] args) {
-        Vector2Dint.type=CalculateType.EUCLIDEAN;
         Diagram p = new Diagram("fexla".hashCode());
         int width=90,height=30;
         p.initialDiagram(new GeneratorUseDataNum(p), width, height, 2,8,16);
