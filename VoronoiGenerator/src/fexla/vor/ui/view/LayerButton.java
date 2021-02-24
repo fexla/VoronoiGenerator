@@ -12,10 +12,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
@@ -34,10 +31,11 @@ public class LayerButton {
     @FXML
     private TextField nameField;
     @FXML
-    private Circle hooker;
+    private HBox hooker;
     private String name;
     public static int nameIndex = 1;
     private boolean dragging;
+
 
 
     private double y = 0;
@@ -50,15 +48,13 @@ public class LayerButton {
         nameLabel.setText(name);
         nameField.setText(name);
         label.setLayoutX(20);
-        label.setLayoutY(pane.getPrefHeight()/2-label.getPrefHeight()/2);
+        label.setLayoutY(pane.getPrefHeight()/2-label.getPrefHeight()/2-7);
         nameLabel.setLayoutX(50);
-        nameLabel.setLayoutY(pane.getPrefHeight()/2-nameLabel.getPrefHeight()/2);
+        nameLabel.setLayoutY(pane.getPrefHeight()/2-nameLabel.getPrefHeight()/2-7);
         nameField.setLayoutX(50);
         nameField.prefHeightProperty().bind(nameLabel.heightProperty());
-        nameField.setLayoutY(pane.getPrefHeight()/2-nameField.getPrefHeight()/2);
-        BackgroundFill backgroundFill = new BackgroundFill(Color.SNOW, null, null);
-        Background background = new Background(backgroundFill);
-        pane.setBackground(background);
+        nameField.setLayoutY(pane.getPrefHeight()/2-nameField.getPrefHeight()/2-10);
+
         nameField.focusedProperty().addListener((observableValue, b1, b2) -> {
             if (b1 && (!b2)) {
                 nameLabel.setText(nameField.getText());
@@ -66,12 +62,13 @@ public class LayerButton {
                 nameLabel.setVisible(true);
             }
         });
+        hooker.setLayoutY(pane.getPrefHeight()/2-hooker.getPrefHeight()/2+2);
         hooker.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
             hooker.setCursor(Cursor.CLOSED_HAND);
             y = event.getY();
         });
         hooker.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
-            ((Circle) event.getSource()).setCursor(Cursor.DEFAULT);
+            ((HBox) event.getSource()).setCursor(Cursor.DEFAULT);
             pane.toFront();pane.setOpacity(1);
             dragging = false;
             controller.updateLayerButtonLayout();

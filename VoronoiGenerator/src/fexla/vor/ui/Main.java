@@ -20,6 +20,7 @@ public class Main extends Application {
 
     public static Stage stage;
     private static BorderPane layout;
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -32,7 +33,7 @@ public class Main extends Application {
         stage.show();
     }
 
-    private void loadLayout(){
+    private void loadLayout() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("view/Layout.fxml"));
         try {
@@ -42,13 +43,15 @@ public class Main extends Application {
         }
         Scene scene = new Scene(layout);
         stage.setScene(scene);
+        scene.getStylesheets().add(Main.class.getResource("view/s.css").toExternalForm());
         stage.setMinWidth(layout.getMinWidth());
-        stage.setMinHeight(layout.getMinHeight()+50);
+        stage.setMinHeight(layout.getMinHeight() + 50);
     }
-    private void loadEditUI(){
+
+    private void loadEditUI() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("view/EditUI.fxml"));
-        AnchorPane pane=null;
+        AnchorPane pane = null;
         try {
             pane = loader.load();
         } catch (IOException e) {

@@ -1,21 +1,23 @@
 package fexla.vor.ui.view;
 
 import fexla.vor.ui.Main;
+import fexla.vor.ui.item.Item;
+import fexla.vor.ui.item.ItemTextField;
+import fexla.vor.ui.item.TextFieldChecker;
 import fexla.vor.ui.model.DiagramModel;
 import fexla.vor.ui.model.LayerModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.SplitPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.Pane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ：fexla
@@ -29,18 +31,35 @@ public class EditUIController {
     private ScrollPane scrollPane;
     @FXML
     private AnchorPane scrollPaneOut;
+    @FXML
+    private VBox LayerEditBox;
+
+
+    private Background unSelectedBackgrand;
+    private Background selectedBackgrand;
 
     private List<AnchorPane> LayerButtons;
 
-    private static int LayerButtonHeight;
-    private static int LayerButtonPad = 10;
+    private AnchorPane selectedLayerButton;
 
+    private static int LayerButtonHeight = 40;
+    private static int LayerButtonPad = 5;
+
+    private Map<AnchorPane, LayerModel> layerModelMap;
     private DiagramModel dm;
+
+    private List<Item> items;
 
     public void initialize() {
         dm = new DiagramModel();
+        items = new ArrayList<>();
         LayerButtons = new ArrayList<>();
         LayerButton.nameIndex = 1;
+        layerModelMap = new HashMap<>();
+
+        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(246, 246, 247), null, null);
+        selectedBackgrand = new Background(backgroundFill);
+
         loadLayerButton();
         loadLayerButton();
         loadLayerButton();
@@ -60,13 +79,24 @@ public class EditUIController {
         LayerOverview.getChildren().add(b);
         b.prefWidthProperty().bind(LayerOverview.widthProperty());
         b.setVisible(false);
-        ((LayerButton) loader.getController()).setController(this);
+
         LayerButtonHeight = (int) b.getPrefHeight();
+        unSelectedBackgrand = b.getBackground();
+        b.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            AnchorPane p = (AnchorPane) event.getSource();
+            if (p == selectedLayerButton) return;
+            if (selectedLayerButton != null) selectedLayerButton.setBackground(unSelectedBackgrand);
+            p.setBackground(selectedBackgrand);
+            selectedLayerButton = p;
+            showLayerModel(layerModelMap.get(p));
+        });
+        ((LayerButton) loader.getController()).setController(this);
         LayerButtons.add(b);
         LayerModel lm = new LayerModel();
         lm.setName("");
         lm.setUnitLength(10);
         dm.add(lm);
+        layerModelMap.put(b, lm);
     }
 
     public void updateLayerButtonLayout() {
@@ -105,4 +135,25 @@ public class EditUIController {
         }
     }
 
+    public void clearEditBox() {
+        items = new ArrayList<>();
+        LayerEditBox.getChildren().clear();
+    }
+
+    TextFieldChecker IntergerChecker = string -> {
+        try {
+            Integer.parseInt(string);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    };
+
+    public void showLayerModel(LayerModel model) {
+        clearEditBox();
+        HBox box = new HBox();
+        ItemTextField layerUnitLengthField = new ItemTextField(box, "层单位格宽度 : ", IntergerChecker,
+                model.getUnitLength() + "", string -> model.setUnitLength(Integer.parseInt(string)));
+        LayerEditBox.getChildren().add(box);
+    }
 }

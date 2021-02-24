@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
@@ -8,11 +10,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="pane" prefHeight="40.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fexla.vor.ui.view.LayerButton">
+<AnchorPane fx:id="pane" maxHeight="40.0" minWidth="250.0" prefHeight="40.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fexla.vor.ui.view.LayerButton">
     <children>
-        <Label fx:id="label" text="层-" />
-      <Label fx:id="nameLabel" alignment="CENTER" onMouseClicked="#nameLabelClicked" text="name" />
-      <TextField fx:id="nameField" visible="false" />
-      <Circle fx:id="hooker" fill="DODGERBLUE" layoutY="29.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="10.0" />
+        <Label fx:id="label" text="层 -" />
+      <Label fx:id="nameLabel" alignment="CENTER" onMouseClicked="#nameLabelClicked" text="name">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets></Label>
+      <TextField fx:id="nameField" prefHeight="40.0" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <HBox fx:id="hooker" alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="20.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Line endY="25.0" fill="#898989" stroke="#8a8a8a" strokeLineCap="ROUND" strokeWidth="1.3">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Line>
+            <Line endY="25.0" fill="#898989" stroke="#8a8a8a" strokeLineCap="ROUND" strokeWidth="1.3">
+               <HBox.margin>
+                  <Insets left="6.0" />
+               </HBox.margin>
+            </Line>
+         </children>
+      </HBox>
     </children>
 </AnchorPane>

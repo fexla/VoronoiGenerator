@@ -20,19 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d75f487-605b-4598-9fc3-301ac46fcee6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/model/DiagramModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/model/LayerModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/model/PointModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/item/Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/item/ItemTextField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/item/TextFieldChecker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/item/TextFieldPropertyUpdator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/EditUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/EditUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/EditUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/EditUIController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/Layout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/Layout.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/LayoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/LayoutController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/view/EditUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/EditUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/view/EditUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/EditUIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayerButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayerButton.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayerButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayerButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/view/Layout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/Layout.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +47,7 @@
       <list>
         <option value="JavaFXApplication" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -61,11 +65,17 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../VoronoiGenerator-Core/out/production/VoronoiGenerator-Core" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="fexla.vor.ui.item" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.UI">
     <configuration name="UI" type="Application" factoryName="Application">
@@ -133,14 +143,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="412" y="167" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613750944724" />
-    <state x="719" y="127" key="#com.intellij.ide.util.MemberChooser" timestamp="1614130656753">
+    <state x="719" y="127" key="#com.intellij.ide.util.MemberChooser" timestamp="1614159364466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="719" y="127" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1614130656753" />
+    <state x="719" y="127" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1614159364466" />
     <state x="626" y="262" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1613742111388">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="626" y="262" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613742111388" />
+    <state x="690" y="397" width="539" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1614185012934">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="397" width="539" height="256" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1614185012934" />
     <state x="710" y="387" key="DetectedRootsChooserDialog" timestamp="1613750973393">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -149,38 +163,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="164" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1613751095832" />
-    <state width="1868" height="189" key="GridCell.Tab.0.bottom" timestamp="1614130018737">
+    <state width="1868" height="189" key="GridCell.Tab.0.bottom" timestamp="1614186331412">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1614130018737" />
-    <state width="1868" height="189" key="GridCell.Tab.0.center" timestamp="1614130018737">
+    <state width="1868" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1614186331412" />
+    <state width="1868" height="189" key="GridCell.Tab.0.center" timestamp="1614186331412">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="189" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1614130018737" />
-    <state width="1868" height="189" key="GridCell.Tab.0.left" timestamp="1614130018737">
+    <state width="1868" height="189" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1614186331412" />
+    <state width="1868" height="189" key="GridCell.Tab.0.left" timestamp="1614186331412">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="189" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1614130018737" />
-    <state width="1868" height="189" key="GridCell.Tab.0.right" timestamp="1614130018737">
+    <state width="1868" height="189" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1614186331412" />
+    <state width="1868" height="189" key="GridCell.Tab.0.right" timestamp="1614186331412">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="189" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1614130018737" />
-    <state width="1868" height="332" key="GridCell.Tab.1.bottom" timestamp="1614124507367">
+    <state width="1868" height="189" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1614186331412" />
+    <state width="1868" height="332" key="GridCell.Tab.1.bottom" timestamp="1614131253479">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="332" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1614124507367" />
-    <state width="1868" height="332" key="GridCell.Tab.1.center" timestamp="1614124507367">
+    <state width="1868" height="332" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1614131253479" />
+    <state width="1868" height="332" key="GridCell.Tab.1.center" timestamp="1614131253479">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="332" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1614124507367" />
-    <state width="1868" height="332" key="GridCell.Tab.1.left" timestamp="1614124507367">
+    <state width="1868" height="332" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1614131253479" />
+    <state width="1868" height="332" key="GridCell.Tab.1.left" timestamp="1614131253479">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="332" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1614124507367" />
-    <state width="1868" height="332" key="GridCell.Tab.1.right" timestamp="1614124507367">
+    <state width="1868" height="332" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1614131253479" />
+    <state width="1868" height="332" key="GridCell.Tab.1.right" timestamp="1614131253479">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="332" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1614124507367" />
+    <state width="1868" height="332" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1614131253479" />
     <state x="533" y="161" key="NewModule_or_Project.wizard" timestamp="1613750417876">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
