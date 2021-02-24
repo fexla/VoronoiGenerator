@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,9 +8,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="pane" prefHeight="70.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fexla.vor.ui.view.LayerButton">
+<AnchorPane fx:id="pane" prefHeight="40.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fexla.vor.ui.view.LayerButton">
     <children>
-        <Label layoutX="39.0" layoutY="12.0" prefHeight="92.0" prefWidth="182.0" text="Label" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="70.0" layoutX="116.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" width="150.0" />
+        <Label fx:id="label" text="层-" />
+      <Label fx:id="nameLabel" alignment="CENTER" onMouseClicked="#nameLabelClicked" text="name" />
+      <TextField fx:id="nameField" visible="false" />
+      <Circle fx:id="hooker" fill="DODGERBLUE" layoutY="29.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="10.0" />
     </children>
 </AnchorPane>

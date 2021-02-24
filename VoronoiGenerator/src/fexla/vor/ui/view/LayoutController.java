@@ -4,6 +4,9 @@ import fexla.vor.ui.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +27,5 @@ public class LayoutController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

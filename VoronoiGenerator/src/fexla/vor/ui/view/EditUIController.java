@@ -1,10 +1,17 @@
 package fexla.vor.ui.view;
 
 import fexla.vor.ui.Main;
+import fexla.vor.ui.model.DiagramModel;
+import fexla.vor.ui.model.LayerModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,24 +25,30 @@ import java.util.List;
 public class EditUIController {
     @FXML
     private Pane LayerOverview;
+    @FXML
+    private ScrollPane scrollPane;
+    @FXML
+    private AnchorPane scrollPaneOut;
 
     private List<AnchorPane> LayerButtons;
 
     private static int LayerButtonHeight;
-//    private static int LayerButtonPad=2 ;
+    private static int LayerButtonPad = 10;
+
+    private DiagramModel dm;
 
     public void initialize() {
+        dm = new DiagramModel();
         LayerButtons = new ArrayList<>();
-        LayerButtons.add(loadLayerButton());
-        LayerButtons.add(loadLayerButton());
-        LayerButtons.add(loadLayerButton());
-        LayerButtons.add(loadLayerButton());
-        LayerButtons.add(loadLayerButton());
-        LayerButtons.add(loadLayerButton());
+        LayerButton.nameIndex = 1;
+        loadLayerButton();
+        loadLayerButton();
+        loadLayerButton();
+        loadLayerButton();
         updateLayerButtonLayout();
     }
 
-    private AnchorPane loadLayerButton() {
+    private void loadLayerButton() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("view/LayerButton.fxml"));
         AnchorPane b = null;
@@ -49,7 +62,11 @@ public class EditUIController {
         b.setVisible(false);
         ((LayerButton) loader.getController()).setController(this);
         LayerButtonHeight = (int) b.getPrefHeight();
-        return b;
+        LayerButtons.add(b);
+        LayerModel lm = new LayerModel();
+        lm.setName("");
+        lm.setUnitLength(10);
+        dm.add(lm);
     }
 
     public void updateLayerButtonLayout() {
@@ -58,12 +75,13 @@ public class EditUIController {
             updataLayerButtonLocation(i);
             anchorPane.setVisible(true);
         }
+        LayerOverview.setMinHeight((LayerButtons.size() - 1) * (LayerButtonHeight + LayerButtonPad));
     }
 
     private void updataLayerButtonLocation(int i) {
         AnchorPane anchorPane = LayerButtons.get(i);
         anchorPane.setLayoutX(0);
-        anchorPane.setLayoutY(i * LayerButtonHeight);
+        anchorPane.setLayoutY(i * (LayerButtonHeight + LayerButtonPad));
     }
 
     public void updateLayerButtonSwap(AnchorPane pane) {

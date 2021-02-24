@@ -1,11 +1,24 @@
 package fexla.vor.ui.view;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Circle;
 
 /**
  * @author ：fexla
@@ -14,6 +27,16 @@ import javafx.scene.layout.AnchorPane;
  */
 public class LayerButton {
     private EditUIController controller;
+    @FXML
+    private Label label;
+    @FXML
+    private Label nameLabel;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private Circle hooker;
+    private String name;
+    public static int nameIndex = 1;
     private boolean dragging;
 
 
@@ -23,19 +46,41 @@ public class LayerButton {
     private AnchorPane pane;
 
     public void initialize() {
-        pane.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
-            pane.setCursor(Cursor.CLOSED_HAND);
+        name = nameIndex++ + "";
+        nameLabel.setText(name);
+        nameField.setText(name);
+        label.setLayoutX(20);
+        label.setLayoutY(pane.getPrefHeight()/2-label.getPrefHeight()/2);
+        nameLabel.setLayoutX(50);
+        nameLabel.setLayoutY(pane.getPrefHeight()/2-nameLabel.getPrefHeight()/2);
+        nameField.setLayoutX(50);
+        nameField.prefHeightProperty().bind(nameLabel.heightProperty());
+        nameField.setLayoutY(pane.getPrefHeight()/2-nameField.getPrefHeight()/2);
+        BackgroundFill backgroundFill = new BackgroundFill(Color.SNOW, null, null);
+        Background background = new Background(backgroundFill);
+        pane.setBackground(background);
+        nameField.focusedProperty().addListener((observableValue, b1, b2) -> {
+            if (b1 && (!b2)) {
+                nameLabel.setText(nameField.getText());
+                nameField.setVisible(false);
+                nameLabel.setVisible(true);
+            }
+        });
+        hooker.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+            hooker.setCursor(Cursor.CLOSED_HAND);
             y = event.getY();
         });
-        pane.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
-            ((AnchorPane) event.getSource()).setCursor(Cursor.DEFAULT);
+        hooker.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
+            ((Circle) event.getSource()).setCursor(Cursor.DEFAULT);
+            pane.toFront();pane.setOpacity(1);
             dragging = false;
             controller.updateLayerButtonLayout();
         });
-        pane.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
+        hooker.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
             double distanceY = event.getY() - y;
             double y2 = pane.getLayoutY() + distanceY;
             pane.setLayoutY(y2);
+            pane.toFront();pane.setOpacity(0.5);
             dragging = true;
             controller.updateLayerButtonSwap(pane);
         });
@@ -55,5 +100,12 @@ public class LayerButton {
 
     public void setDragging(boolean dragging) {
         this.dragging = dragging;
+    }
+
+    @FXML
+    private void nameLabelClicked() {
+        nameLabel.setVisible(false);
+        nameField.setVisible(true);
+        nameField.requestFocus();
     }
 }

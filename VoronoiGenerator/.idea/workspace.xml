@@ -20,13 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0d75f487-605b-4598-9fc3-301ac46fcee6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayerButton.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayerButton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/model/DiagramModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/model/LayerModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fexla/vor/ui/model/PointModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/EditUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/EditUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/EditUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/EditUIController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/Layout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/Layout.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/LayoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/VoronoiGenerator/fexla/vor/ui/view/LayoutController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/view/EditUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/EditUI.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/view/EditUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/EditUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayerButton.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayerButton.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayerButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayerButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fexla/vor/ui/view/LayoutController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,10 +133,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="412" y="167" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1613750944724" />
-    <state x="719" y="127" key="#com.intellij.ide.util.MemberChooser" timestamp="1614004494298">
+    <state x="719" y="127" key="#com.intellij.ide.util.MemberChooser" timestamp="1614130656753">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="719" y="127" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1614004494298" />
+    <state x="719" y="127" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1614130656753" />
     <state x="626" y="262" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1613742111388">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -143,30 +149,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="689" y="164" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1613751095832" />
-    <state width="1868" height="277" key="GridCell.Tab.0.bottom" timestamp="1614005446808">
+    <state width="1868" height="189" key="GridCell.Tab.0.bottom" timestamp="1614130018737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="277" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1614005446808" />
-    <state width="1868" height="277" key="GridCell.Tab.0.center" timestamp="1614005446808">
+    <state width="1868" height="189" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1614130018737" />
+    <state width="1868" height="189" key="GridCell.Tab.0.center" timestamp="1614130018737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="277" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1614005446808" />
-    <state width="1868" height="277" key="GridCell.Tab.0.left" timestamp="1614005446808">
+    <state width="1868" height="189" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1614130018737" />
+    <state width="1868" height="189" key="GridCell.Tab.0.left" timestamp="1614130018737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="277" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1614005446808" />
-    <state width="1868" height="277" key="GridCell.Tab.0.right" timestamp="1614005446808">
+    <state width="1868" height="189" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1614130018737" />
+    <state width="1868" height="189" key="GridCell.Tab.0.right" timestamp="1614130018737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1868" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1614005446808" />
+    <state width="1868" height="189" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1614130018737" />
+    <state width="1868" height="332" key="GridCell.Tab.1.bottom" timestamp="1614124507367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1868" height="332" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1614124507367" />
+    <state width="1868" height="332" key="GridCell.Tab.1.center" timestamp="1614124507367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1868" height="332" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1614124507367" />
+    <state width="1868" height="332" key="GridCell.Tab.1.left" timestamp="1614124507367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1868" height="332" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1614124507367" />
+    <state width="1868" height="332" key="GridCell.Tab.1.right" timestamp="1614124507367">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1868" height="332" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1614124507367" />
     <state x="533" y="161" key="NewModule_or_Project.wizard" timestamp="1613750417876">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="533" y="161" key="NewModule_or_Project.wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1613750417876" />
-    <state x="313" y="0" key="SettingsEditor" timestamp="1614000706228">
+    <state x="313" y="0" key="SettingsEditor" timestamp="1614130400141">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="313" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1614000706228" />
+    <state x="313" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1614130400141" />
     <state x="453" y="189" key="Vcs.Push.Dialog.v2" timestamp="1613749778726">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
