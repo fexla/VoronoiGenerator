@@ -45,6 +45,7 @@ public class EditUIController {
     private static int LayerButtonHeight = 40;
     private static int LayerButtonPad = 5;
 
+    private boolean justDragged = false;
     private Map<AnchorPane, LayerModel> layerModelMap;
     private DiagramModel dm;
 
@@ -84,6 +85,10 @@ public class EditUIController {
         unSelectedBackgrand = b.getBackground();
         b.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
             AnchorPane p = (AnchorPane) event.getSource();
+            if (justDragged) {
+                justDragged = false;
+                return;
+            }
             if (p == selectedLayerButton) return;
             if (selectedLayerButton != null) selectedLayerButton.setBackground(unSelectedBackgrand);
             p.setBackground(selectedBackgrand);
@@ -133,6 +138,14 @@ public class EditUIController {
             LayerButtons.set(i, m);
             updataLayerButtonLocation(i);
         }
+    }
+
+    public boolean isJustDragged() {
+        return justDragged;
+    }
+
+    public void setJustDragged(boolean justDragged) {
+        this.justDragged = justDragged;
     }
 
     public void clearEditBox() {

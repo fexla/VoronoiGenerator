@@ -37,7 +37,6 @@ public class LayerButton {
     private boolean dragging;
 
 
-
     private double y = 0;
 
     @FXML
@@ -48,12 +47,12 @@ public class LayerButton {
         nameLabel.setText(name);
         nameField.setText(name);
         label.setLayoutX(20);
-        label.setLayoutY(pane.getPrefHeight()/2-label.getPrefHeight()/2-7);
+        label.setLayoutY(pane.getPrefHeight() / 2 - label.getPrefHeight() / 2 - 7);
         nameLabel.setLayoutX(50);
-        nameLabel.setLayoutY(pane.getPrefHeight()/2-nameLabel.getPrefHeight()/2-7);
+        nameLabel.setLayoutY(pane.getPrefHeight() / 2 - nameLabel.getPrefHeight() / 2 - 7);
         nameField.setLayoutX(50);
         nameField.prefHeightProperty().bind(nameLabel.heightProperty());
-        nameField.setLayoutY(pane.getPrefHeight()/2-nameField.getPrefHeight()/2-10);
+        nameField.setLayoutY(pane.getPrefHeight() / 2 - nameField.getPrefHeight() / 2 - 10);
 
         nameField.focusedProperty().addListener((observableValue, b1, b2) -> {
             if (b1 && (!b2)) {
@@ -62,14 +61,15 @@ public class LayerButton {
                 nameLabel.setVisible(true);
             }
         });
-        hooker.setLayoutY(pane.getPrefHeight()/2-hooker.getPrefHeight()/2+2);
+        hooker.setLayoutY(pane.getPrefHeight() / 2 - hooker.getPrefHeight() / 2 + 2);
         hooker.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
             hooker.setCursor(Cursor.CLOSED_HAND);
             y = event.getY();
         });
         hooker.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
             ((HBox) event.getSource()).setCursor(Cursor.DEFAULT);
-            pane.toFront();pane.setOpacity(1);
+            pane.toFront();
+            pane.setOpacity(1);
             dragging = false;
             controller.updateLayerButtonLayout();
         });
@@ -77,9 +77,11 @@ public class LayerButton {
             double distanceY = event.getY() - y;
             double y2 = pane.getLayoutY() + distanceY;
             pane.setLayoutY(y2);
-            pane.toFront();pane.setOpacity(0.5);
+            pane.toFront();
+            pane.setOpacity(0.5);
             dragging = true;
             controller.updateLayerButtonSwap(pane);
+            controller.setJustDragged(true);
         });
     }
 

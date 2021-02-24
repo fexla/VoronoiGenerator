@@ -1,6 +1,5 @@
 package fexla.vor.ui;
 
-import fexla.vor.Diagram;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
