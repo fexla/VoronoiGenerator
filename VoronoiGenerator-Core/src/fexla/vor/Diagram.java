@@ -23,19 +23,26 @@ public class Diagram {
     }
 
     //返回该点最近的根点数据
-    public Data getPointData(Vector2Dint pos, int level) {
+    public Data getPointData(Vector2D pos, int level) {
 
         return getClosestRoot(pos, level).getData();
     }
 
-    public PointRoot getClosestRoot(Vector2Dint pos, int level) {
+    //返回该点最近的根点数据
+    public Data getPointData(Vector2Dint pos, int level) {
+
+        return getPointData(Vector2Dint.i2d(pos), level);
+    }
+
+    public PointRoot getClosestRoot(Vector2D pos, int level) {
         RootLayer layer = layers[level];
         PointRoot[] roots = layer.getRootSq(pos);
         double min = Double.MAX_VALUE;
         PointRoot closest = null;
         for (int i = 0; i < 9; i++) {
             Vector2Dint pos2 = roots[i].getPos();
-            double dis = Vector2Dint.dist(pos, pos2, layer.getType());
+            Vector2D temp = Vector2Dint.i2d(pos2);
+            double dis = Vector2D.dist(pos, temp, layer.getType());
             if (dis < min) {
                 min = dis;
                 closest = roots[i];
@@ -43,6 +50,10 @@ public class Diagram {
         }
         return closest;
 
+    }
+
+    public PointRoot getClosestRoot(Vector2Dint pos, int level) {
+        return getClosestRoot(Vector2Dint.i2d(pos), level);
     }
 
 

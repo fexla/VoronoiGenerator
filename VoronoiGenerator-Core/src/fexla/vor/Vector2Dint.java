@@ -16,27 +16,6 @@ public class Vector2Dint {
         this.y = y;
     }
 
-    //距离
-    public static double dist(Vector2Dint v1, Vector2Dint v2, CalculateType type) {
-        int a, b;
-        a = v1.x - v2.x;
-        b = v1.y - v2.y;
-        switch (type) {
-            case EUCLIDEAN:
-                return Math.sqrt(a * a + b * b);
-            case CHEBYSHEV:
-                return a > b ? a : b;
-            case MANHATTAN:
-                return a + b;
-        }
-
-        return 0;
-    }
-
-    public static double dist(Vector2Dint v1, Vector2Dint v2) {
-        return dist(v1, v2, CalculateType.EUCLIDEAN);
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,6 +31,10 @@ public class Vector2Dint {
 
     public Vector2Dint copy() {
         return new Vector2Dint(x, y);
+    }
+
+    public static Vector2D i2d(Vector2Dint v) {
+        return new Vector2D(v.x, v.y);
     }
 }
 

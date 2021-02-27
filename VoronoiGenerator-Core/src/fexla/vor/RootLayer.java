@@ -13,12 +13,12 @@ public class RootLayer {
     private int level;
     private long seed;
     private Map<Vector2Dint, PointRoot> roots;
-    private CalculateType type=CalculateType.EUCLIDEAN;
+    private CalculateType type = CalculateType.EUCLIDEAN;
     PointRootGenerator generator;
 
     //输入图的坐标返回该坐标对应的在这一组中的根点对象
-    public PointRoot getRoot(Vector2Dint pos) {
-        Vector2Dint xpos = pos.copy();
+    public PointRoot getRoot(Vector2D pos) {
+        Vector2Dint xpos = Vector2D.d2i(pos);
         xpos.x /= unitLenth;
         xpos.y /= unitLenth;
         if (roots.containsKey(xpos)) return roots.get(xpos);
@@ -28,15 +28,15 @@ public class RootLayer {
     }
 
     //得到对应的root周围一共9个root
-    public PointRoot[] getRootSq(Vector2Dint pos) {
-        Vector2Dint xpos = pos.copy();
+    public PointRoot[] getRootSq(Vector2D pos) {
+        Vector2D xpos = pos.copy();
         xpos.x /= unitLenth;
         xpos.y /= unitLenth;
         xpos.x -= 1;
         xpos.y -= 1;
         PointRoot[] res = new PointRoot[9];
         for (int i = 0; i < 9; i++) {
-            res[i] = getRoot(new Vector2Dint(unitLenth * (xpos.x + i % 3), unitLenth * (xpos.y + i / 3)));
+            res[i] = getRoot(new Vector2D(unitLenth * (xpos.x + i % 3), unitLenth * (xpos.y + i / 3)));
         }
         return res;
     }
