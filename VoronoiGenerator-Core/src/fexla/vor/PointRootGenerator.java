@@ -1,6 +1,8 @@
 package fexla.vor;
 
 
+import fexla.vor.util.Vector2Dint;
+
 import java.util.Random;
 
 /**
@@ -36,7 +38,8 @@ public class PointRootGenerator {
 
     private Vector2Dint getPosInDiagram(Vector2Dint pos, long seed, int unitLength) {
         Vector2Dint posInDiagram = pos.copy();
-        Random ran = new Random((seed ^ pos.x) % (1 << 16) + (seed ^ pos.y) << 16);
+//        Random ran = new Random((seed ^ pos.x) % (1 << 16) + (seed ^ pos.y) << 16);
+        Random ran = new Random(pos.hashCode());
         posInDiagram.x *= unitLength;
         posInDiagram.x += ran.nextInt(unitLength);
         posInDiagram.y *= unitLength;

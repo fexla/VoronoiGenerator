@@ -1,6 +1,7 @@
 package fexla.vor.test;
 
 import fexla.vor.*;
+import fexla.vor.util.Vector2Dint;
 
 /**
  * @author ：fexla

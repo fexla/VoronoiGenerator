@@ -1,8 +1,8 @@
-package fexla.vor;
+package fexla.vor.util;
+
+import fexla.vor.CalculateType;
 
 import java.util.Objects;
-
-import static java.lang.Math.sqrt;
 
 /**
  * @author ：fexla

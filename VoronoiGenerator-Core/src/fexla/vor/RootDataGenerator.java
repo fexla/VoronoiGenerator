@@ -1,5 +1,7 @@
 package fexla.vor;
 
+import fexla.vor.util.Vector2Dint;
+
 /**
  * @author ：fexla
  * @description：根点数据生成器

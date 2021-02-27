@@ -1,6 +1,8 @@
 package fexla.vor.test;
 
 import fexla.vor.*;
+import fexla.vor.util.Hash;
+import fexla.vor.util.Vector2Dint;
 
 /**
  * @author ：fexla
@@ -13,8 +15,9 @@ public class GeneratorUseDataNum extends PointRootGenerator {
 
     private static int getSeed(Vector2Dint pos, long seed) {
         int x = pos.x, y = pos.y;
-        int num = (int) ((seed ^ x) % (1 << 16) + (seed ^ y) << 16);
-        return minNum + num % (maxNum-minNum+1);
+//        int num = Math.abs((int) ((seed ^ x) % (1 << 16) + (seed ^ y) << 16));
+        int num = (int) Hash.hash2d(seed, pos.hashCode());
+        return minNum + num % (maxNum - minNum + 1);
     }
 
     public GeneratorUseDataNum() {

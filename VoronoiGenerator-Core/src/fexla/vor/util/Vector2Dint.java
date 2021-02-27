@@ -1,4 +1,4 @@
-package fexla.vor;
+package fexla.vor.util;
 
 import java.util.Objects;
 
@@ -26,7 +26,7 @@ public class Vector2Dint {
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return (int) Hash.hash2d(x, y);
     }
 
     public Vector2Dint copy() {

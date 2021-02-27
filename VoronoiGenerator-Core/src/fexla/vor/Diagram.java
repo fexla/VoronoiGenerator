@@ -1,5 +1,8 @@
 package fexla.vor;
 
+import fexla.vor.util.Vector2D;
+import fexla.vor.util.Vector2Dint;
+
 /**
  * @author ：fexla
  * @description：Voronoi图
