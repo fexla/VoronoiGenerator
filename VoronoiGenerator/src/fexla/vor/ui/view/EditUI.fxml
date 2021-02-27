@@ -23,17 +23,21 @@
                 <SplitPane dividerPositions="0.6018099547511312" prefHeight="160.0" prefWidth="200.0">
                     <items>
                         <BorderPane fx:id="imageContainer" prefHeight="998.0" prefWidth="525.0" style="-fx-background-color: White;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <top>
-                                <ImageView fx:id="imageView" fitHeight="209.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-                            </top>
                             <bottom>
-                                <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="81.0" prefWidth="411.0" BorderPane.alignment="CENTER">
+                                <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="60.0" prefWidth="411.0" BorderPane.alignment="CENTER">
                                     <items>
                                         <Label text="Label" />
                                         <Slider prefHeight="33.0" prefWidth="192.0" value="50.0" />
                                     </items>
                                 </ToolBar>
                             </bottom>
+                     <center>
+                        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                                      <ImageView fx:id="imageView" fitHeight="209.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
+                     </center>
                         </BorderPane>
                         <AnchorPane layoutX="-36.0" layoutY="328.0" maxWidth="500.0" minWidth="200.0" prefHeight="998.0" prefWidth="208.0">
                             <children>

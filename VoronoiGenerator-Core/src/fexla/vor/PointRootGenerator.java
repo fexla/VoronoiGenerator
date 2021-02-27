@@ -31,7 +31,7 @@ public class PointRootGenerator {
         if (level == diagram.getLayerNum() - 1) {
             res.setData(dataGenerator.generate(pos, seed));
         } else {
-            res.setData(diagram.getPointData(posInDiagram, level + 1).nextData());
+            res.setData(diagram.getPointData(posInDiagram, level + 1).nextData(pos,level));
         }
         return res;
     }

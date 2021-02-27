@@ -71,7 +71,8 @@ public class EditUIController {
         selectedBackgrand = new Background(backgroundFill);
 
         imageView.fitWidthProperty().bind(imageContainer.widthProperty());
-        imageContainer.heightProperty().addListener((observableValue, o, n) -> imageView.setFitHeight(n.intValue() - 150));
+//        imageContainer.widthProperty().addListener((observableValue, o, n) -> imageView.setFitWidth(n.intValue()));
+        imageContainer.heightProperty().addListener((observableValue, o, n) -> imageView.setFitHeight(n.intValue() -60));
         diagramImage = new DiagramImage((int) imageView.getFitWidth(), (int) imageView.getFitHeight());
         ChangeListener<Number> imageViewListener = (observableValue, number, t1) -> {
             diagramImage.setPixelNum((int) imageView.getFitWidth(), (int) imageView.getFitHeight());

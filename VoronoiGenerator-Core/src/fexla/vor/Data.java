@@ -1,5 +1,7 @@
 package fexla.vor;
 
+import fexla.vor.util.Vector2Dint;
+
 /**
  * @author ：fexla
  * @description：数据
@@ -7,5 +9,5 @@ package fexla.vor;
  */
 public abstract class Data {
     //上一层传递给下一层的数据
-    public abstract Data nextData();
+    public abstract Data nextData(Vector2Dint pos, int level);
 }

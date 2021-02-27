@@ -1,6 +1,7 @@
 package fexla.vor.test;
 
 import fexla.vor.Data;
+import fexla.vor.util.Vector2Dint;
 
 /**
  * @author ：fexla
@@ -10,10 +11,6 @@ import fexla.vor.Data;
 public class DataOfNum extends Data {
     private int value;
 
-    @Override
-    public Data nextData() {
-        return new DataOfNum(value);
-    }
 
     public DataOfNum(int value) {
         this.value = value;
@@ -25,5 +22,10 @@ public class DataOfNum extends Data {
 
     public void setValue(int value) {
         this.value = value;
+    }
+
+    @Override
+    public Data nextData(Vector2Dint pos, int level) {
+        return new DataOfNum(value);
     }
 }
