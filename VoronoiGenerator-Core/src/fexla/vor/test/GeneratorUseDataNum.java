@@ -17,7 +17,7 @@ public class GeneratorUseDataNum extends PointRootGenerator {
         return minNum + num % (maxNum-minNum+1);
     }
 
-    public GeneratorUseDataNum(Diagram diagram) {
-        super(diagram, (pos, seed) -> new DataOfNum(getSeed(pos, seed)));
+    public GeneratorUseDataNum() {
+        super((pos, seed) -> new DataOfNum(getSeed(pos, seed)));
     }
 }

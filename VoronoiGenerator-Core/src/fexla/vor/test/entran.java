@@ -9,9 +9,8 @@ import fexla.vor.*;
  */
 public class entran {
     public static void main(String[] args) {
-        Diagram p = new Diagram("fexla".hashCode());
+        Diagram p = new Diagram("fexla".hashCode(), new GeneratorUseDataNum(),2,8,16);
         int width=90,height=30;
-        p.initialDiagram(new GeneratorUseDataNum(p), width, height, 2,8,16);
         Vector2Dint v = new Vector2Dint(0, 0);
 
         for (int yi = 0; yi < height; yi++) {

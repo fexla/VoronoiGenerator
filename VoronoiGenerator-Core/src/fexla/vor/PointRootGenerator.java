@@ -12,8 +12,7 @@ public class PointRootGenerator {
     private Diagram diagram;
     private RootDataGenerator dataGenerator;
 
-    public PointRootGenerator(Diagram diagram, RootDataGenerator dataGenerator) {
-        this.diagram = diagram;
+    public PointRootGenerator(RootDataGenerator dataGenerator) {
         this.dataGenerator = dataGenerator;
     }
 
@@ -49,4 +48,7 @@ public class PointRootGenerator {
         return diagram;
     }
 
+    public void setDiagram(Diagram diagram) {
+        this.diagram = diagram;
+    }
 }

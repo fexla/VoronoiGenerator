@@ -10,8 +10,16 @@ public class Diagram {
     private RootLayer layers[];
     private int layerNum = -1;//层级数量，未生成时为-1
 
-    public Diagram(long seed) {
+    public Diagram(long seed, PointRootGenerator rootGenerator, int... unitLen) {
         this.seed = seed;
+        rootGenerator.setDiagram(this);
+        int num = unitLen.length;
+        layerNum = num;
+        layers = new RootLayer[num];
+        for (int i = num - 1; i >= 0; i--) {
+            layers[i] = new RootLayer(unitLen[i], i, seed, rootGenerator);
+
+        }
     }
 
     //返回该点最近的根点数据
@@ -35,24 +43,6 @@ public class Diagram {
         }
         return closest;
 
-    }
-
-    /**
-     * 初始化图像
-     *
-     * @param gen     根点生成器
-     * @param width   表示宽度（x的范围0~a）
-     * @param height  表示长度（y的范围0~b）
-     * @param unitLen 表示各层的单元格边长，unitLen[0]为最低层
-     */
-    public void initialDiagram(PointRootGenerator gen, int width, int height, int... unitLen) {
-        int num = unitLen.length;
-        layerNum = num;
-        layers = new RootLayer[num];
-        for (int i = num - 1; i >= 0; i--) {
-            layers[i] = new RootLayer(unitLen[i], i, seed, gen);
-
-        }
     }
 
 
