@@ -6,9 +6,12 @@ import fexla.vor.ui.item.ItemTextField;
 import fexla.vor.ui.item.TextFieldChecker;
 import fexla.vor.ui.model.DiagramModel;
 import fexla.vor.ui.model.LayerModel;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -32,6 +35,10 @@ public class EditUIController {
     @FXML
     private AnchorPane scrollPaneOut;
     @FXML
+    private BorderPane imageContainer;
+    @FXML
+    private ImageView imageView;
+    @FXML
     private VBox LayerEditBox;
 
 
@@ -51,6 +58,8 @@ public class EditUIController {
 
     private List<Item> items;
 
+    private DiagramImage diagramImage;
+
     public void initialize() {
         dm = new DiagramModel();
         items = new ArrayList<>();
@@ -60,6 +69,17 @@ public class EditUIController {
 
         BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(246, 246, 247), null, null);
         selectedBackgrand = new Background(backgroundFill);
+
+        imageView.fitWidthProperty().bind(imageContainer.widthProperty());
+        imageContainer.heightProperty().addListener((observableValue, o, n) -> imageView.setFitHeight(n.intValue() - 150));
+        diagramImage = new DiagramImage((int) imageView.getFitWidth(), (int) imageView.getFitHeight());
+        ChangeListener<Number> imageViewListener = (observableValue, number, t1) -> {
+            diagramImage.setPixelNum((int) imageView.getFitWidth(), (int) imageView.getFitHeight());
+            imageView.setImage(diagramImage.getImage());
+        };
+        imageView.fitWidthProperty().addListener(imageViewListener);
+        imageView.fitHeightProperty().addListener(imageViewListener);
+
 
         loadLayerButton();
         loadLayerButton();
