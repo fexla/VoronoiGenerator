@@ -1,7 +1,11 @@
 package fexla.vor.ui.view;
 
+import fexla.vor.Data;
 import fexla.vor.Diagram;
 import fexla.vor.PointRootGenerator;
+import fexla.vor.RootDataGenerator;
+import fexla.vor.ui.fun.DataColored;
+import fexla.vor.ui.fun.DataOfColor;
 import fexla.vor.util.*;
 import fexla.vor.test.DataOfNum;
 import fexla.vor.test.GeneratorUseDataNum;
@@ -27,7 +31,8 @@ public class DiagramImage {
     private WritableImage image;
 
     public DiagramImage(int width, int length) {
-        diagram = new Diagram("fexla".hashCode(), new GeneratorUseDataNum(), 4, 20,40, 64,128);
+        diagram = new Diagram("fexla".hashCode(),
+                new PointRootGenerator((vector2Dint, seed) -> new DataOfColor(3, seed)), 4, 20, 40, 64, 128);
         startPoint = new Vector2D(0, 0);
         pixelNum = new Vector2Dint(width, length);
         pixelLength = 1;
@@ -40,8 +45,10 @@ public class DiagramImage {
         PixelWriter pw = image.getPixelWriter();
         for (int y = 0; y < length; y++) {
             for (int x = 0; x < width; x++) {
-                int color = ((DataOfNum) diagram.getPointData(new Vector2D(startPoint.x + x * pixelLength, startPoint.y + y * pixelLength), 0)).getValue();
-                pw.setColor(x, y, new Color(color / 255.0, color / 255.0, color / 255.0, 1));
+                Color color = ((DataColored)
+                        diagram.getPointData(new Vector2D(startPoint.x + x * pixelLength, startPoint.y + y * pixelLength), 0
+                        )).getColor();
+                pw.setColor(x, y, color);
             }
         }
         return image;
