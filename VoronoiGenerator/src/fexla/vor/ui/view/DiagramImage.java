@@ -49,12 +49,18 @@ public class DiagramImage {
         int length = pixelNum.y;
         image = new WritableImage(width, length);
         PixelWriter pw = image.getPixelWriter();
-        for (int y = 0; y < length; y++) {
-            for (int x = 0; x < width; x++) {
+        int sq=5;
+        for (int y = 0; y <= length-sq; y+=sq) {
+            for (int x = 0; x <= width-sq; x+=sq) {
                 Color color = ((DataColored)
                         diagram.getPointData(new Vector2D(startPoint.x + x * pixelLength, startPoint.y + y * pixelLength), 0
                         )).getColor();
-                pw.setColor(x, y, color);
+                for (int i = 0; i < sq; i++) {
+                    for (int j = 0; j < sq; j++) {
+                        pw.setColor(x+i, y+j, color);
+
+                    }
+                }
             }
         }
         return image;
