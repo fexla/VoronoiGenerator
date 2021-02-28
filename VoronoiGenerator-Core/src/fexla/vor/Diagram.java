@@ -28,7 +28,9 @@ public class Diagram {
     //返回该点最近的根点数据
     public Data getPointData(Vector2D pos, int level) {
 
-        return getClosestRoot(pos, level).getData();
+        PointRoot root=getClosestRoot(pos, level);
+        if (root==null)return null;
+        return root.getData();
     }
 
     //返回该点最近的根点数据
@@ -51,6 +53,7 @@ public class Diagram {
                 closest = roots[i];
             }
         }
+        if (min < 3&&level==0) return null;
         return closest;
 
     }

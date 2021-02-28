@@ -33,13 +33,13 @@ public class DiagramImage {
 
     public DiagramImage(ImageView view) {
         setView(view);
-        colorLayer = 1;
+        colorLayer =3;
         diagram = new Diagram("fexla".hashCode(),
                 new PointRootGenerator((vector2Dint, seed) -> {
                     DataOfColor data = new DataOfColor(colorLayer, seed);
                     if (colorLayer == diagram.getLayerNum() - 1) return data.nextData(vector2Dint, colorLayer);
                     return data;
-                }), 64, 128);
+                }), 32,64,96, 128);
         startPoint = new Vector2D(0, 0);
         pixelLength = 1;
     }
@@ -49,15 +49,17 @@ public class DiagramImage {
         int length = pixelNum.y;
         image = new WritableImage(width, length);
         PixelWriter pw = image.getPixelWriter();
-        int sq=5;
-        for (int y = 0; y <= length-sq; y+=sq) {
-            for (int x = 0; x <= width-sq; x+=sq) {
-                Color color = ((DataColored)
-                        diagram.getPointData(new Vector2D(startPoint.x + x * pixelLength, startPoint.y + y * pixelLength), 0
-                        )).getColor();
+        int sq = 1;
+        for (int y = 0; y <= length - sq; y += sq) {
+            for (int x = 0; x <= width - sq; x += sq) {
+                DataColored res = (DataColored) diagram.getPointData(new Vector2D(startPoint.x + x * pixelLength, startPoint.y + y * pixelLength), 0);
+
+                Color color = null;
+                if (res == null) color = Color.RED;
+                else color = res.getColor();
                 for (int i = 0; i < sq; i++) {
                     for (int j = 0; j < sq; j++) {
-                        pw.setColor(x+i, y+j, color);
+                        pw.setColor(x + i, y + j, color);
 
                     }
                 }
