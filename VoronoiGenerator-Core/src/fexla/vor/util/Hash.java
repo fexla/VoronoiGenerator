@@ -1,5 +1,7 @@
 package fexla.vor.util;
 
+import java.util.Random;
+
 /**
  * @author ：fexla
  * @description：TODO
@@ -9,6 +11,9 @@ public class Hash {
     final static int p1 = 479, p2 = 487;
 
     public static long hash2d(long a, long b) {
-        return (p1 + b) * p2 + a;
+//        return (p1 + b) * p2 + a;
+        Random r1 = new Random(a), r2 = new Random(b), r3 = new Random(r1.nextInt() ^ r2.nextInt());
+        return r3.nextInt();
     }
+
 }
