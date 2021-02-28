@@ -1,21 +1,19 @@
 package fexla.vor.ui.view;
 
-import fexla.vor.Data;
 import fexla.vor.Diagram;
 import fexla.vor.PointRootGenerator;
-import fexla.vor.RootDataGenerator;
 import fexla.vor.ui.fun.DataColored;
 import fexla.vor.ui.fun.DataOfColor;
 import fexla.vor.util.*;
-import fexla.vor.test.DataOfNum;
-import fexla.vor.test.GeneratorUseDataNum;
+import javafx.beans.value.ChangeListener;
+import javafx.scene.Cursor;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * @author ：fexla
@@ -27,14 +25,22 @@ public class DiagramImage {
     private Vector2D startPoint;
     private Vector2Dint pixelNum;//生成的像素长宽
     private double pixelLength;//单像素在diagram中的长度
+    private int colorLayer;//开始上色的层编号
 
     private WritableImage image;
 
-    public DiagramImage(int width, int length) {
+    private ImageView view;
+
+    public DiagramImage(ImageView view) {
+        setView(view);
+        colorLayer = 1;
         diagram = new Diagram("fexla".hashCode(),
-                new PointRootGenerator((vector2Dint, seed) -> new DataOfColor(3, seed)), 4, 20, 40, 64, 128);
+                new PointRootGenerator((vector2Dint, seed) -> {
+                    DataOfColor data = new DataOfColor(colorLayer, seed);
+                    if (colorLayer == diagram.getLayerNum() - 1) return data.nextData(vector2Dint, colorLayer);
+                    return data;
+                }), 64, 128);
         startPoint = new Vector2D(0, 0);
-        pixelNum = new Vector2Dint(width, length);
         pixelLength = 1;
     }
 
@@ -57,5 +63,77 @@ public class DiagramImage {
     public void setPixelNum(int width, int length) {
         this.pixelNum = new Vector2Dint(width, length);
 
+    }
+
+    public Diagram getDiagram() {
+        return diagram;
+    }
+
+    public void setDiagram(Diagram diagram) {
+        this.diagram = diagram;
+    }
+
+    public Vector2D getStartPoint() {
+        return startPoint;
+    }
+
+    public void setStartPoint(Vector2D startPoint) {
+        this.startPoint = startPoint;
+    }
+
+    public Vector2Dint getPixelNum() {
+        return pixelNum;
+    }
+
+    public void setPixelNum(Vector2Dint pixelNum) {
+        this.pixelNum = pixelNum;
+    }
+
+    public double getPixelLength() {
+        return pixelLength;
+    }
+
+    public void setPixelLength(double pixelLength) {
+        this.pixelLength = pixelLength;
+    }
+
+    public ImageView getView() {
+        return view;
+    }
+
+    private double MouseX, MouseY;
+
+    public void setView(ImageView view) {
+        this.view = view;
+        int width = (int) view.getFitWidth(), length = (int) view.getFitHeight();
+        pixelNum = new Vector2Dint(width, length);
+        ChangeListener<Number> imageViewListener = (observableValue, number, t1) -> {
+            setPixelNum((int) view.getFitWidth(), (int) view.getFitHeight());
+            view.setImage(getImage());
+        };
+        view.fitWidthProperty().addListener(imageViewListener);
+        view.fitHeightProperty().addListener(imageViewListener);
+
+        view.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            MouseX = event.getX();
+            MouseY = event.getY();
+        });
+        view.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+            view.setCursor(Cursor.CLOSED_HAND);
+            MouseX = event.getX();
+            MouseY = event.getY();
+        });
+        view.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
+            view.setCursor(Cursor.DEFAULT);
+        });
+        view.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
+            double distanceX = event.getX() - MouseX;
+            double distanceY = event.getY() - MouseY;
+            startPoint.x -= distanceX;
+            startPoint.y -= distanceY;
+            MouseX = event.getX();
+            MouseY = event.getY();
+            view.setImage(getImage());
+        });
     }
 }
