@@ -34,9 +34,17 @@ public class RootLayer {
     public PointRoot[] getRootSq(Vector2D pos) {
         Vector2D xpos = pos.copy();
         xpos.x /= unitLenth;
+        if (xpos.x>0) {
+            xpos.x -= 1;
+        }else{
+            xpos.x -= 2;
+        }
         xpos.y /= unitLenth;
-        xpos.x -= 1;
-        xpos.y -= 1;
+        if (xpos.y>0) {
+            xpos.y -= 1;
+        }else{
+            xpos.y -= 2;
+        }
         PointRoot[] res = new PointRoot[9];
         for (int i = 0; i < 9; i++) {
             res[i] = getRoot(new Vector2D(unitLenth * (xpos.x + i % 3), unitLenth * (xpos.y + i / 3)));
