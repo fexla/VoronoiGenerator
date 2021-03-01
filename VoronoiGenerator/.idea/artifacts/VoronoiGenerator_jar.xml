@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="VoronoiGenerator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/VoronoiGenerator_jar</output-path>
+    <root id="archive" name="VoronoiGenerator.jar">
+      <element id="module-output" name="VoronoiGenerator" />
+      <element id="library" level="project" name="VoronoiGenerator-Core" />
+    </root>
+  </artifact>
+</component>
