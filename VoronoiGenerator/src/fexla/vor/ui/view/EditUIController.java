@@ -115,7 +115,7 @@ public class EditUIController {
         });
         ((LayerButton) loader.getController()).setController(this);
         LayerButtons.add(b);
-        LayerModel lm = new LayerModel((LayerButtons.size()+1)*10);
+        LayerModel lm = new LayerModel((LayerButtons.size() + 1) * 10);
         lm.setName("");
         lm.setDiagramModel(dm);
         dm.add(lm);
@@ -129,6 +129,13 @@ public class EditUIController {
             anchorPane.setVisible(true);
         }
         LayerOverview.setMinHeight((LayerButtons.size() - 1) * (LayerButtonHeight + LayerButtonPad));
+        List<LayerModel> layerModels = new ArrayList<>();
+
+        for (int i = 0; i < LayerButtons.size(); i++) {
+            layerModels.add(layerModelMap.get(LayerButtons.get(i)));
+        }
+        dm.setLayerModels(layerModels);
+        dm.update();
     }
 
     private void updataLayerButtonLocation(int i) {
