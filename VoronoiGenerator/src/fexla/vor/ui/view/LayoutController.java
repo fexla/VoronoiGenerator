@@ -10,6 +10,8 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * @author ：fexla
@@ -18,9 +20,10 @@ import java.io.IOException;
  */
 public class LayoutController {
     @FXML
-    private void initialize() {
+    private void initialize() throws MalformedURLException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(LayoutController.class.getResource("EditUI.fxml"));
+        URL url=LayoutController.class.getResource("EditUI.fxml");
+        loader.setLocation(url);
         AnchorPane pane=null;
         try {
             pane = loader.load();

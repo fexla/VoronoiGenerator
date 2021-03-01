@@ -71,15 +71,19 @@ public class EditUIController {
         selectedBackgrand = new Background(backgroundFill);
 
         imageView.fitWidthProperty().bind(imageContainer.widthProperty());
-        imageContainer.heightProperty().addListener((observableValue, o, n) -> imageView.setFitHeight(n.intValue() -60));
+        imageContainer.heightProperty().addListener((observableValue, o, n) -> imageView.setFitHeight(n.intValue() - 60));
         diagramImage = new DiagramImage(imageView);
-
+        dm.setDiagramImage(diagramImage);
+        dm.setBlockLength(5);
+        dm.setColorLayer(2);
 
         loadLayerButton();
         loadLayerButton();
         loadLayerButton();
         loadLayerButton();
         updateLayerButtonLayout();
+
+        dm.update();
     }
 
     private void loadLayerButton() {
@@ -111,9 +115,9 @@ public class EditUIController {
         });
         ((LayerButton) loader.getController()).setController(this);
         LayerButtons.add(b);
-        LayerModel lm = new LayerModel();
+        LayerModel lm = new LayerModel((LayerButtons.size()+1)*10);
         lm.setName("");
-        lm.setUnitLength(10);
+        lm.setDiagramModel(dm);
         dm.add(lm);
         layerModelMap.put(b, lm);
     }

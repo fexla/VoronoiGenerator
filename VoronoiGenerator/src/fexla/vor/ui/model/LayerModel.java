@@ -13,8 +13,10 @@ public class LayerModel {
     private String name;
     private int unitLength;
     private List<PointModel> specialPoints;
+    private DiagramModel diagramModel;
 
-    public LayerModel() {
+    public LayerModel(int unitLength) {
+        this.unitLength=unitLength;
         specialPoints=new ArrayList<>();
     }
 
@@ -34,12 +36,21 @@ public class LayerModel {
         this.name = name;
     }
 
+    public DiagramModel getDiagramModel() {
+        return diagramModel;
+    }
+
+    public void setDiagramModel(DiagramModel diagramModel) {
+        this.diagramModel = diagramModel;
+    }
+
     public int getUnitLength() {
         return unitLength;
     }
 
     public void setUnitLength(int unitLength) {
         this.unitLength = unitLength;
+        diagramModel.update();
     }
 
     public List<PointModel> getSpecialPoints() {

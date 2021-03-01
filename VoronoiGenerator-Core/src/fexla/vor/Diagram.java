@@ -53,7 +53,7 @@ public class Diagram {
                 closest = roots[i];
             }
         }
-        if (min < 3&&level==0) return null;
+//        if (min < 3&&level==0) return null;
         return closest;
 
     }
@@ -69,5 +69,9 @@ public class Diagram {
 
     public int getLayerNum() {
         return layerNum;
+    }
+
+    public RootLayer getLayer(int i) {
+        return layers[i];
     }
 }
