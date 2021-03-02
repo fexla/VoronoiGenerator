@@ -48,6 +48,7 @@ public class DiagramImage {
         int width = pixelNum.x;
         int length = pixelNum.y;
         image = new WritableImage(width, length);
+        if (diagram == null) return image;
         PixelWriter pw = image.getPixelWriter();
         for (int y = 0; y <= length - blockLength; y += blockLength) {
             for (int x = 0; x <= width - blockLength; x += blockLength) {

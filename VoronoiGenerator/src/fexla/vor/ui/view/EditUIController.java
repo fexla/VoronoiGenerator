@@ -61,10 +61,8 @@ public class EditUIController {
     private DiagramImage diagramImage;
 
     public void initialize() {
-        dm = new DiagramModel();
         items = new ArrayList<>();
         LayerButtons = new ArrayList<>();
-        LayerButton.nameIndex = 1;
         layerModelMap = new HashMap<>();
 
         BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(246, 246, 247), null, null);
@@ -73,20 +71,39 @@ public class EditUIController {
         imageView.fitWidthProperty().bind(imageContainer.widthProperty());
         imageContainer.heightProperty().addListener((observableValue, o, n) -> imageView.setFitHeight(n.intValue() - 60));
         diagramImage = new DiagramImage(imageView);
-        dm.setDiagramImage(diagramImage);
+        setDm(getBlankDiagramModel());
+    }
+    public DiagramModel getBlankDiagramModel() {
+        DiagramModel dm = new DiagramModel();
         dm.setBlockLength(5);
+        for (int i = 0; i < 3; i++) {
+            LayerModel lm = new LayerModel((i + 1) * (i + 1) * 10);
+            lm.setDiagramModel(dm);
+            lm.setName((i+1)+"");
+            lm.setLevel(i);
+            dm.add(lm);
+        }
         dm.setColorLayer(2);
-
-        loadLayerButton();
-        loadLayerButton();
-        loadLayerButton();
-        loadLayerButton();
-        updateLayerButtonLayout();
-
-        dm.update();
+        return dm;
     }
 
-    private void loadLayerButton() {
+    public DiagramModel getDm() {
+        return dm;
+    }
+
+    public void setDm(DiagramModel dm) {
+        System.out.println("set");
+        this.dm = dm;
+        dm.setDiagramImage(diagramImage);
+        List<LayerModel> lms = dm.getLayerModels();
+        for (LayerModel lm : lms) {
+            loadLayerButton(lm);
+        }
+        dm.setDiagramImage(diagramImage);
+        updateLayerButtonLayout();
+    }
+
+    public void loadLayerButton(LayerModel lm) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("view/LayerButton.fxml"));
         AnchorPane b = null;
@@ -113,12 +130,10 @@ public class EditUIController {
             selectedLayerButton = p;
             showLayerModel(layerModelMap.get(p));
         });
-        ((LayerButton) loader.getController()).setController(this);
+        LayerButton lb=        ((LayerButton) loader.getController());
+        lb.setController(this);
+        lb.setModel(lm);
         LayerButtons.add(b);
-        LayerModel lm = new LayerModel((LayerButtons.size() + 1) * 10);
-        lm.setName("");
-        lm.setDiagramModel(dm);
-        dm.add(lm);
         layerModelMap.put(b, lm);
     }
 

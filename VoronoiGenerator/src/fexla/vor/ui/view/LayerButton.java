@@ -34,7 +34,6 @@ public class LayerButton {
     @FXML
     private HBox hooker;
     private String name;
-    public static int nameIndex = 1;
     private boolean dragging;
 
 
@@ -46,9 +45,6 @@ public class LayerButton {
     private LayerModel model;
 
     public void initialize() {
-        name = nameIndex++ + "";
-        nameLabel.setText(name);
-        nameField.setText(name);
         label.setLayoutX(20);
         label.setLayoutY(pane.getPrefHeight() / 2 - label.getPrefHeight() / 2 - 7);
         nameLabel.setLayoutX(50);
@@ -103,6 +99,17 @@ public class LayerButton {
 
     public void setDragging(boolean dragging) {
         this.dragging = dragging;
+    }
+
+    public LayerModel getModel() {
+        return model;
+    }
+
+    public void setModel(LayerModel model) {
+        this.model = model;
+        name = model.getName();
+        nameLabel.setText(name);
+        nameField.setText(name);
     }
 
     @FXML
