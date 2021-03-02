@@ -1,5 +1,6 @@
 package fexla.vor.ui.view;
 
+import fexla.vor.ui.model.LayerModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
@@ -42,6 +43,8 @@ public class LayerButton {
     @FXML
     private AnchorPane pane;
 
+    private LayerModel model;
+
     public void initialize() {
         name = nameIndex++ + "";
         nameLabel.setText(name);
@@ -57,6 +60,7 @@ public class LayerButton {
         nameField.focusedProperty().addListener((observableValue, b1, b2) -> {
             if (b1 && (!b2)) {
                 nameLabel.setText(nameField.getText());
+                model.setName(nameField.getText());
                 nameField.setVisible(false);
                 nameLabel.setVisible(true);
             }

@@ -132,7 +132,9 @@ public class EditUIController {
         List<LayerModel> layerModels = new ArrayList<>();
 
         for (int i = 0; i < LayerButtons.size(); i++) {
-            layerModels.add(layerModelMap.get(LayerButtons.get(i)));
+            LayerModel lmi = layerModelMap.get(LayerButtons.get(i));
+            lmi.setLevel(i);
+            layerModels.add(lmi);
         }
         dm.setLayerModels(layerModels);
         dm.update();
