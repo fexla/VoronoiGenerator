@@ -6,10 +6,9 @@ import fexla.vor.ui.item.ItemTextField;
 import fexla.vor.ui.item.TextFieldChecker;
 import fexla.vor.ui.model.DiagramModel;
 import fexla.vor.ui.model.LayerModel;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -40,7 +39,8 @@ public class EditUIController {
     private ImageView imageView;
     @FXML
     private VBox LayerEditBox;
-
+    @FXML
+    private Button removeLayerButton;
 
     private Background unSelectedBackgrand;
     private Background selectedBackgrand;
@@ -73,13 +73,14 @@ public class EditUIController {
         diagramImage = new DiagramImage(imageView);
         setDm(getBlankDiagramModel());
     }
+
     public DiagramModel getBlankDiagramModel() {
         DiagramModel dm = new DiagramModel();
         dm.setBlockLength(5);
         for (int i = 0; i < 3; i++) {
             LayerModel lm = new LayerModel((i + 1) * (i + 1) * 10);
             lm.setDiagramModel(dm);
-            lm.setName((i+1)+"");
+            lm.setName((i + 1) + "");
             lm.setLevel(i);
             dm.add(lm);
         }
@@ -92,7 +93,6 @@ public class EditUIController {
     }
 
     public void setDm(DiagramModel dm) {
-        System.out.println("set");
         this.dm = dm;
         dm.setDiagramImage(diagramImage);
         List<LayerModel> lms = dm.getLayerModels();
@@ -129,8 +129,9 @@ public class EditUIController {
             p.setBackground(selectedBackgrand);
             selectedLayerButton = p;
             showLayerModel(layerModelMap.get(p));
+            removeLayerButton.setDisable(false);
         });
-        LayerButton lb=        ((LayerButton) loader.getController());
+        LayerButton lb = ((LayerButton) loader.getController());
         lb.setController(this);
         lb.setModel(lm);
         LayerButtons.add(b);
@@ -210,5 +211,17 @@ public class EditUIController {
         ItemTextField layerUnitLengthField = new ItemTextField(box, "层单位格宽度 : ", IntergerChecker,
                 model.getUnitLength() + "", string -> model.setUnitLength(Integer.parseInt(string)));
         LayerEditBox.getChildren().add(box);
+    }
+
+    @FXML
+    private void removeSelectedLayer() {
+        AnchorPane removeItem = selectedLayerButton;
+        LayerButtons.remove(removeItem);
+        LayerOverview.getChildren().remove(removeItem);
+        LayerModel lm = layerModelMap.remove(removeItem);
+        dm.remove(lm);
+        updateLayerButtonLayout();
+        clearEditBox();
+        if (LayerButtons.size() == 0) removeLayerButton.setDisable(true);
     }
 }

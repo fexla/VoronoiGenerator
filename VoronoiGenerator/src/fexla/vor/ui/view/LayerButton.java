@@ -119,4 +119,5 @@ public class LayerButton {
         nameField.setVisible(true);
         nameField.requestFocus();
     }
+
 }
