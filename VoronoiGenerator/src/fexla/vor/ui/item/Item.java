@@ -2,6 +2,7 @@ package fexla.vor.ui.item;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 
 /**
  * @author ：fexla
@@ -16,6 +17,7 @@ public abstract class Item {
     public Item(HBox box, String string) {
         this.box = box;
         txt = new Label(string);
+        txt.setFont(new Font(14));
         box.getChildren().add(txt);
     }
 }

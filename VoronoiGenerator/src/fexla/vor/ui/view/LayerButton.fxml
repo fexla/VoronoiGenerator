@@ -12,14 +12,20 @@
 
 <AnchorPane fx:id="pane" maxHeight="40.0" minWidth="250.0" prefHeight="40.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fexla.vor.ui.view.LayerButton">
     <children>
-        <Label fx:id="label" text="层 -" />
+        <Label fx:id="label" text="层 -">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
       <Label fx:id="nameLabel" alignment="CENTER" onMouseClicked="#nameLabelClicked" text="name">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
          <opaqueInsets>
             <Insets />
-         </opaqueInsets></Label>
+         </opaqueInsets>
+         <font>
+            <Font size="15.0" />
+         </font></Label>
       <TextField fx:id="nameField" prefHeight="40.0" visible="false">
          <font>
             <Font size="13.0" />
