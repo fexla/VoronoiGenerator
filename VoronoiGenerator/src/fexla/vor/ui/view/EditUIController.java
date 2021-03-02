@@ -32,7 +32,7 @@ public class EditUIController {
     @FXML
     private ScrollPane scrollPane;
     @FXML
-    private AnchorPane scrollPaneOut;
+    private BorderPane scrollPaneOut;
     @FXML
     private BorderPane imageContainer;
     @FXML
@@ -67,7 +67,7 @@ public class EditUIController {
 
         BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(246, 246, 247), null, null);
         selectedBackgrand = new Background(backgroundFill);
-
+        scrollPane.prefWidthProperty().bind(scrollPaneOut.widthProperty());
         imageView.fitWidthProperty().bind(imageContainer.widthProperty());
         imageContainer.heightProperty().addListener((observableValue, o, n) -> imageView.setFitHeight(n.intValue() - 60));
         diagramImage = new DiagramImage(imageView);
@@ -145,7 +145,7 @@ public class EditUIController {
             updataLayerButtonLocation(i);
             anchorPane.setVisible(true);
         }
-        LayerOverview.setMinHeight((LayerButtons.size() - 1) * (LayerButtonHeight + LayerButtonPad));
+        LayerOverview.setMinHeight((LayerButtons.size() ) * (LayerButtonHeight + LayerButtonPad));
         List<LayerModel> layerModels = new ArrayList<>();
 
         for (int i = 0; i < LayerButtons.size(); i++) {

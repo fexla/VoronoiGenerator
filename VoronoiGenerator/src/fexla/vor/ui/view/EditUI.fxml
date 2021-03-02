@@ -10,30 +10,33 @@
     <children>
         <SplitPane dividerPositions="0.5" layoutX="358.0" layoutY="475.0" prefHeight="1000.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
-                <AnchorPane fx:id="scrollPaneOut" maxWidth="300.0" minWidth="200.0" prefHeight="160.0" prefWidth="100.0">
-                    <children>
-                        <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" layoutX="14.0" prefHeight="998.0" prefWidth="300.0" styleClass="s" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <content>
-                                <BorderPane minWidth="250.0" prefHeight="311.0" prefWidth="298.0" style="-fx-background-color: White;">
-                                    <top>
-                                        <ToolBar prefHeight="40.0" prefWidth="200.0">
-                                            <items>
-                                    <HBox fillHeight="false" prefWidth="90.0">
-                                       <children>
-                                                      <Button mnemonicParsing="false" onAction="#newLayer" prefHeight="25.0" prefWidth="25.0" text="+" />
-                                                      <Button fx:id="removeLayerButton" disable="true" mnemonicParsing="false" onAction="#removeSelectedLayer" prefHeight="25.0" prefWidth="25.0" text=" -" />
-                                       </children>
-                                    </HBox>
-                                            </items>
-                                        </ToolBar>
-                                    </top>
-                           <center>
-                              <Pane fx:id="LayerOverview" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-                           </center>
-                                </BorderPane>
-                            </content>
-                        </ScrollPane>
-                    </children>
+                <AnchorPane maxWidth="300.0" minWidth="90.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                          <BorderPane fx:id="scrollPaneOut" minWidth="90.0" prefHeight="998.0" prefWidth="300.0" style="-fx-background-color: White;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <top>
+                                  <ToolBar prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER_LEFT">
+                                      <items>
+                              <HBox fillHeight="false" prefWidth="90.0">
+                                 <children>
+                                                <Button mnemonicParsing="false" onAction="#newLayer" prefHeight="20.0" prefWidth="20.0" text="+" />
+                                                <Button fx:id="removeLayerButton" disable="true" mnemonicParsing="false" onAction="#removeSelectedLayer" prefHeight="20.0" prefWidth="20.0" text=" -" />
+                                 </children>
+                              </HBox>
+                                      </items>
+                                  </ToolBar>
+                              </top>
+                     <center>
+                              <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true" prefHeight="500.0" prefWidth="298.0" styleClass="s" BorderPane.alignment="CENTER">
+                           <content>
+                              <Pane fx:id="LayerOverview" minWidth="260.0" prefHeight="928.0" prefWidth="280.0" />
+                           </content>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                              </ScrollPane>
+                     </center>
+                          </BorderPane>
+               </children>
                 </AnchorPane>
                 <SplitPane dividerPositions="0.6018099547511312" prefHeight="160.0" prefWidth="200.0">
                     <items>
@@ -54,17 +57,17 @@
                                 </Pane>
                             </center>
                         </BorderPane>
-                        <AnchorPane layoutX="-36.0" layoutY="328.0" maxWidth="500.0" minWidth="200.0" prefHeight="998.0" prefWidth="208.0">
+                        <AnchorPane layoutX="-36.0" layoutY="328.0" maxWidth="500.0" minWidth="270.0" prefHeight="998.0" prefWidth="208.0">
                             <children>
-                                <TabPane prefHeight="998.0" prefWidth="345.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+                                <TabPane minWidth="270.0" prefHeight="998.0" prefWidth="300.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
                                     <tabs>
                                         <Tab text="编辑层">
                                             <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                <AnchorPane prefHeight="180.0" prefWidth="200.0">
                                                     <children>
                                                         <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="928.0" prefWidth="345.0" style="-fx-background-color: AliceBlue;" styleClass="s" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                             <content>
-                                                                <VBox fx:id="LayerEditBox" minWidth="250.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: White;">
+                                                                <VBox fx:id="LayerEditBox" minWidth="300.0" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: White;">
                                                                     <padding>
                                                                         <Insets left="30.0" top="20.0" />
                                                                     </padding>
