@@ -76,6 +76,7 @@ public class LayerButton {
         hooker.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
             double distanceY = event.getY() - y;
             double y2 = pane.getLayoutY() + distanceY;
+            if (y2 < 0) return;
             pane.setLayoutY(y2);
             pane.toFront();
             pane.setOpacity(0.5);
