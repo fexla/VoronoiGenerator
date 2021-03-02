@@ -103,7 +103,7 @@ public class EditUIController {
         updateLayerButtonLayout();
     }
 
-    public void loadLayerButton(LayerModel lm) {
+    public AnchorPane loadLayerButton(LayerModel lm) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("view/LayerButton.fxml"));
         AnchorPane b = null;
@@ -136,6 +136,7 @@ public class EditUIController {
         lb.setModel(lm);
         LayerButtons.add(b);
         layerModelMap.put(b, lm);
+        return b;
     }
 
     public void updateLayerButtonLayout() {
@@ -223,5 +224,23 @@ public class EditUIController {
         updateLayerButtonLayout();
         clearEditBox();
         if (LayerButtons.size() == 0) removeLayerButton.setDisable(true);
+    }
+
+    @FXML
+    void newLayer() {
+        LayerModel lm = null;
+        int location = LayerButtons.size() == 0 ? 0 : LayerButtons.indexOf(selectedLayerButton) + 1;
+        if (location == 0) {
+            lm = new LayerModel(10);
+            removeLayerButton.setDisable(false);
+        } else {
+            lm = new LayerModel(layerModelMap.get(selectedLayerButton).getUnitLength() + 1);
+        }
+        lm.setName(location + 1 + "");
+        lm.setDiagramModel(dm);
+        AnchorPane b = loadLayerButton(lm);
+        LayerButtons.remove(b);
+        LayerButtons.add(location, b);
+        updateLayerButtonLayout();
     }
 }

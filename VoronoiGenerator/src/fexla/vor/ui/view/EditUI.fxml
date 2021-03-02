@@ -20,7 +20,7 @@
                                             <items>
                                     <HBox fillHeight="false" prefWidth="90.0">
                                        <children>
-                                                      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="+" />
+                                                      <Button mnemonicParsing="false" onAction="#newLayer" prefHeight="25.0" prefWidth="25.0" text="+" />
                                                       <Button fx:id="removeLayerButton" disable="true" mnemonicParsing="false" onAction="#removeSelectedLayer" prefHeight="25.0" prefWidth="25.0" text=" -" />
                                        </children>
                                     </HBox>
