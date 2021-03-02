@@ -1,6 +1,8 @@
 package fexla.vor.ui.view;
 
 import fexla.vor.ui.Main;
+import fexla.vor.ui.model.DiagramModel;
+import fexla.vor.ui.model.LayerModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -20,15 +22,16 @@ import java.net.URL;
  */
 public class LayoutController {
     @FXML
-    private void initialize() throws MalformedURLException {
+    private void initialize() {
         FXMLLoader loader = new FXMLLoader();
-        URL url=LayoutController.class.getResource("EditUI.fxml");
+        URL url = LayoutController.class.getResource("EditUI.fxml");
         loader.setLocation(url);
-        AnchorPane pane=null;
+        AnchorPane pane = null;
         try {
             pane = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
