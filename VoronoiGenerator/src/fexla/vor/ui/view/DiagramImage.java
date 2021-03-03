@@ -31,14 +31,8 @@ public class DiagramImage {
     private ImageView view;
 
     public DiagramImage(ImageView view) {
-        setView(view);
+        if (view != null) setView(view);
         colorLayer = 0;
-//        diagram = new Diagram("fexla".hashCode(),
-//                new PointRootGenerator((vector2Dint, seed) -> {
-//                    DataOfColor data = new DataOfColor(colorLayer, seed);
-//                    if (colorLayer == diagram.getLayerNum() - 1) return data.nextData(vector2Dint, colorLayer);
-//                    return data;
-//                }), 32, 64, 96, 128);
         startPoint = new Vector2D(0, 0);
         pixelLength = 1;
         pixelNum = new Vector2Dint(1, 1);
@@ -48,7 +42,7 @@ public class DiagramImage {
         int width = pixelNum.x;
         int length = pixelNum.y;
         image = new WritableImage(width, length);
-        if (diagram == null||diagram.getLayerNum()==0) return image;
+        if (diagram == null || diagram.getLayerNum() == 0) return image;
         PixelWriter pw = image.getPixelWriter();
         for (int y = 0; y <= length - blockLength; y += blockLength) {
             for (int x = 0; x <= width - blockLength; x += blockLength) {
@@ -166,6 +160,7 @@ public class DiagramImage {
     }
 
     public void updateImage() {
-        view.setImage(generateImage());
+        if (view != null)
+            view.setImage(generateImage());
     }
 }

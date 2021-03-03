@@ -5,6 +5,7 @@ import fexla.vor.ui.item.Item;
 import fexla.vor.ui.item.ItemTextField;
 import fexla.vor.ui.item.TextFieldChecker;
 import fexla.vor.ui.model.DiagramModel;
+import fexla.vor.ui.model.ExportModel;
 import fexla.vor.ui.model.LayerModel;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -213,7 +214,7 @@ public class EditUIController {
     }
 
     @FXML
-    void newLayer() {
+    private void newLayer() {
         LayerModel lm = null;
         int location = LayerButtons.size() == 0 ? 0 : LayerButtons.indexOf(selectedLayerButton) + 1;
         if (location == 0) {
