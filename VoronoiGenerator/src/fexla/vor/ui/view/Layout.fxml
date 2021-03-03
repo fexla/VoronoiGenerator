@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -9,13 +10,16 @@
         <menus>
           <Menu mnemonicParsing="false" text="文件">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="读取" />
+                  <MenuItem mnemonicParsing="false" text="保存" />
+                  <MenuItem mnemonicParsing="false" text="保存为..." />
+              <MenuItem mnemonicParsing="false" onAction="#exportUI" text="导出为图片" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="编辑">
             <items>
                   <MenuItem mnemonicParsing="false" text="新建层" />
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" text="删除层" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

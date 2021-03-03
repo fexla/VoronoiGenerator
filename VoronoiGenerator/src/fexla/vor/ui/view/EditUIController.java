@@ -61,7 +61,10 @@ public class EditUIController {
 
     private DiagramImage diagramImage;
 
+    public static EditUIController instance;
+
     public void initialize() {
+        instance = this;
         items = new ArrayList<>();
         LayerButtons = new ArrayList<>();
         layerModelMap = new HashMap<>();
@@ -73,6 +76,10 @@ public class EditUIController {
         imageContainer.heightProperty().addListener((observableValue, o, n) -> imageView.setFitHeight(n.intValue() - 60));
         diagramImage = new DiagramImage(imageView);
         setDm(DiagramModel.getBlankDiagramModel());
+    }
+
+    public DiagramImage getDiagramImage() {
+        return diagramImage;
     }
 
     public DiagramModel getDm() {
@@ -132,7 +139,7 @@ public class EditUIController {
             updataLayerButtonLocation(i);
             anchorPane.setVisible(true);
         }
-        LayerOverview.setMinHeight((LayerButtons.size() ) * (LayerButtonHeight + LayerButtonPad));
+        LayerOverview.setMinHeight((LayerButtons.size()) * (LayerButtonHeight + LayerButtonPad));
         List<LayerModel> layerModels = new ArrayList<>();
 
         for (int i = 0; i < LayerButtons.size(); i++) {

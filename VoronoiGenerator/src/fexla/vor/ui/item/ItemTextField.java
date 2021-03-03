@@ -29,14 +29,20 @@ public class ItemTextField extends Item {
         textField.setFont(new Font(12));
         this.checker = checker;
         this.updator = updator;
-        textField.focusedProperty().addListener((observable, b1, b2) -> {
-            if (!b2)
-                if (!checker.check(textField.getText())) textField.setText(oldValue);
-                else {
-                    oldValue = textField.getText();
-                    updator.update(oldValue);
-                }
-        });
+        if (checker != null)
+            textField.focusedProperty().addListener((observable, b1, b2) -> {
+                if (!b2)
+                    if (!checker.check(textField.getText())) textField.setText(oldValue);
+                    else {
+                        oldValue = textField.getText();
+                        if (updator != null)
+                            updator.update(oldValue);
+                    }
+            });
+        else if (updator != null)
+            textField.focusedProperty().addListener((observable, b1, b2) -> {
+                updator.update(oldValue);
+            });
         box.getChildren().add(textField);
     }
 }
