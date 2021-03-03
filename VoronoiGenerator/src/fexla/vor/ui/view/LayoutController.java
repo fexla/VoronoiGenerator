@@ -143,7 +143,7 @@ public class LayoutController {
         hBox.getChildren().add(button);
         box.getChildren().add(hBox);
 
-
+        exportStage.setTitle("导出");
         exportStage.setScene(scene);
         exportStage.showAndWait();
     }

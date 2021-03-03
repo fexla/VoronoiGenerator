@@ -29,6 +29,7 @@ public class Main extends Application {
         stage = primaryStage;
         loadLayout();
         loadEditUI();
+        stage.setTitle("Voronoi图生成器");
         stage.show();
     }
 
