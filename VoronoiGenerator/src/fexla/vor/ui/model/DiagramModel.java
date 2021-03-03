@@ -98,4 +98,18 @@ public class DiagramModel {
         diagramImage.setBlockLength(blockLength);
         diagramImage.updateImage();
     }
+    public static DiagramModel getBlankDiagramModel() {
+        DiagramModel dm = new DiagramModel();
+        dm.setBlockLength(5);
+        for (int i = 0; i < 3; i++) {
+            LayerModel lm = new LayerModel((i + 1) * (i + 1) * 10);
+            lm.setDiagramModel(dm);
+            lm.setName((i + 1) + "");
+            lm.setLevel(i);
+            dm.add(lm);
+        }
+        dm.setColorLayer(2);
+        return dm;
+    }
+
 }

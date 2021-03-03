@@ -71,21 +71,7 @@ public class EditUIController {
         imageView.fitWidthProperty().bind(imageContainer.widthProperty());
         imageContainer.heightProperty().addListener((observableValue, o, n) -> imageView.setFitHeight(n.intValue() - 60));
         diagramImage = new DiagramImage(imageView);
-        setDm(getBlankDiagramModel());
-    }
-
-    public DiagramModel getBlankDiagramModel() {
-        DiagramModel dm = new DiagramModel();
-        dm.setBlockLength(5);
-        for (int i = 0; i < 3; i++) {
-            LayerModel lm = new LayerModel((i + 1) * (i + 1) * 10);
-            lm.setDiagramModel(dm);
-            lm.setName((i + 1) + "");
-            lm.setLevel(i);
-            dm.add(lm);
-        }
-        dm.setColorLayer(2);
-        return dm;
+        setDm(DiagramModel.getBlankDiagramModel());
     }
 
     public DiagramModel getDm() {
