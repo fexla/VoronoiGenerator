@@ -65,7 +65,7 @@ public class EditUIController {
         LayerButtons = new ArrayList<>();
         layerModelMap = new HashMap<>();
 
-        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(246, 246, 247), null, null);
+        BackgroundFill backgroundFill = new BackgroundFill(Color.rgb(248, 248, 255), null, null);
         selectedBackgrand = new Background(backgroundFill);
         scrollPane.prefWidthProperty().bind(scrollPaneOut.widthProperty());
         imageView.fitWidthProperty().bind(imageContainer.widthProperty());
