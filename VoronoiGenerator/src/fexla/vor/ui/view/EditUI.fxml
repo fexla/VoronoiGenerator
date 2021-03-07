@@ -16,7 +16,7 @@
                               <top>
                                   <ToolBar prefHeight="25.0" prefWidth="200.0" BorderPane.alignment="CENTER_LEFT">
                                       <items>
-                              <HBox fillHeight="false" prefWidth="90.0">
+                              <HBox fillHeight="false">
                                  <children>
                                                 <Button mnemonicParsing="false" onAction="#newLayer" prefHeight="20.0" prefWidth="20.0" text="+" />
                                                 <Button fx:id="removeLayerButton" disable="true" mnemonicParsing="false" onAction="#removeSelectedLayer" prefHeight="20.0" prefWidth="20.0" text=" -" />

@@ -67,7 +67,7 @@ public class LayoutController {
         pane.setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane);
         HBox hBox = new HBox();
-        ItemChoiceBox choiceBox = new ItemChoiceBox(hBox, "格式 :   ", "jpg", "png");
+        ItemChoiceBox choiceBox = new ItemChoiceBox(hBox, "格式    : ", "jpg", "png");
         box.getChildren().add(hBox);
 
         Label label = new Label();
@@ -85,19 +85,19 @@ public class LayoutController {
         };
 
         hBox = new HBox();
-        ItemTextField widthField = new ItemTextField(hBox, "宽度 :   ", IntergerChecker, "1200", null);
+        ItemTextField widthField = new ItemTextField(hBox, "宽度    : ", IntergerChecker, "1200", null);
         box.getChildren().add(hBox);
 
         hBox = new HBox();
-        ItemTextField heightField = new ItemTextField(hBox, "高度 :   ", IntergerChecker, "800", null);
+        ItemTextField heightField = new ItemTextField(hBox, "高度    : ", IntergerChecker, "800", null);
         box.getChildren().add(hBox);
 
         hBox = new HBox();
-        ItemTextField blockLengthField = new ItemTextField(hBox, "块长 :   ", IntergerChecker, "1", null);
+        ItemTextField blockLengthField = new ItemTextField(hBox, "块长    : ", IntergerChecker, "1", null);
         box.getChildren().add(hBox);
 
         hBox = new HBox();
-        ItemTextField fileNameField = new ItemTextField(hBox, "文件名 : ", string -> {
+        ItemTextField fileNameField = new ItemTextField(hBox, "文件名: ", string -> {
             boolean res = true;
             if (string == null || string.length() > 255) res = false;
             if (string.contains("/") || string.contains("?") || string.contains("<") || string.contains(">") || string.contains("\"") || string.contains("|"))
