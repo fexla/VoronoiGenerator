@@ -1,5 +1,6 @@
 package fexla.vor.ui.model;
 
+import com.google.gson.annotations.Expose;
 import fexla.vor.Diagram;
 import fexla.vor.PointRootGenerator;
 import fexla.vor.ui.fun.DataOfColor;
@@ -18,7 +19,7 @@ public class DiagramModel {
     private int colorLayer;
     private int blockLength;
     private List<LayerModel> layerModels;
-    private DiagramImage diagramImage;
+    private transient DiagramImage diagramImage;
 
     public DiagramModel() {
         seed = "fexla".hashCode();
@@ -78,7 +79,7 @@ public class DiagramModel {
     }
 
     public void update() {
-        colorLayer=layerModels.size()-1;
+        colorLayer = layerModels.size() - 1;
         int unitLen[] = new int[layerModels.size()];
         for (int i = 0; i < layerModels.size(); i++) {
             unitLen[i] = layerModels.get(i).getUnitLength();
@@ -92,12 +93,13 @@ public class DiagramModel {
         } else {
             generator = new PointRootGenerator((vector2Dint, seed) -> new DataOfColor(colorLayer, seed));
         }
-        Diagram diagram = new Diagram(seed,generator, unitLen);
+        Diagram diagram = new Diagram(seed, generator, unitLen);
         diagramImage.setDiagram(diagram);
         diagramImage.setColorLayer(colorLayer);
         diagramImage.setBlockLength(blockLength);
         diagramImage.updateImage();
     }
+
     public static DiagramModel getBlankDiagramModel() {
         DiagramModel dm = new DiagramModel();
         dm.setBlockLength(5);

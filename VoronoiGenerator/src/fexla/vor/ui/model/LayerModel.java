@@ -13,7 +13,7 @@ public class LayerModel {
     private String name;
     private int unitLength;
     private List<PointModel> specialPoints;
-    private DiagramModel diagramModel;
+    private transient DiagramModel diagramModel;
 
     public LayerModel(int unitLength) {
         this.unitLength=unitLength;

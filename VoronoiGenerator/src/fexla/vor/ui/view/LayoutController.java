@@ -1,8 +1,12 @@
 package fexla.vor.ui.view;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import fexla.vor.ui.Main;
 import fexla.vor.ui.item.ItemChoiceBox;
 import fexla.vor.ui.item.ItemTextField;
 import fexla.vor.ui.item.TextFieldChecker;
+import fexla.vor.ui.model.DiagramModel;
 import fexla.vor.ui.model.ExportModel;
 import fexla.vor.util.Vector2Dint;
 import javafx.event.ActionEvent;
@@ -18,9 +22,11 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.*;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 
 /**
@@ -31,6 +37,8 @@ import java.net.URL;
 public class LayoutController {
     @FXML
     private MenuItem removeLayerMenuItem;
+
+    private String savePath;
 
     @FXML
     private void initialize() {
@@ -160,5 +168,73 @@ public class LayoutController {
     @FXML
     private void onEditMenuOpen() {
         removeLayerMenuItem.setDisable(EditUIController.instance.getRemoveLayerButton().isDisable());
+    }
+
+    @FXML
+    private void saveAs() {
+        FileChooser fileChooser = new FileChooser();
+        if (savePath != null) fileChooser.setInitialDirectory(new File(savePath).getParentFile());
+        else fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+        fileChooser.setTitle("保存");
+        fileChooser.getExtensionFilters().add(new ExtensionFilter("Voronoi Diagram Project", "*.vdp"));
+        File selectedFile = fileChooser.showSaveDialog(Main.stage);
+        if (selectedFile == null) return;
+        savePath = selectedFile.getPath();
+        save();
+    }
+
+    @FXML
+    private void save() {
+        if (savePath != null) {
+            Gson gson = new Gson();
+            String string = gson.toJson(EditUIController.instance.getDm());
+            File file = new File(savePath);
+            try {
+                if (!file.exists()) file.createNewFile();
+                BufferedWriter bf = new BufferedWriter(new FileWriter(file));
+                bf.write(string);
+                bf.flush();
+                bf.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else
+            saveAs();
+        Main.stage.setTitle("Voronoi图生成器 - "+savePath);
+    }
+
+    @FXML
+    private void open() {
+        FileChooser fileChooser = new FileChooser();
+        if (savePath != null) fileChooser.setInitialDirectory(new File(savePath).getParentFile());
+        else fileChooser.setInitialDirectory(new File(System.getProperty("user.dir")));
+        fileChooser.setTitle("打开");
+        fileChooser.getExtensionFilters().add(new ExtensionFilter("Voronoi Diagram Project", "*.vdp"));
+        File selectedFile = fileChooser.showOpenDialog(Main.stage);
+        if (selectedFile == null) return;
+        String encoding = "UTF-8";
+        String value = null;
+        Long filelength = selectedFile.length();
+        byte[] filecontent = new byte[filelength.intValue()];
+        try {
+            FileInputStream in = new FileInputStream(selectedFile);
+            in.read(filecontent);
+            in.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            value = new String(filecontent, encoding);
+        } catch (UnsupportedEncodingException e) {
+            System.err.println("The OS does not support " + encoding);
+            e.printStackTrace();
+        }
+        Gson gson = new Gson();
+        DiagramModel dm = gson.fromJson(value, DiagramModel.class);
+        EditUIController.instance.setDm(dm);
+        savePath = selectedFile.getPath();
+        Main.stage.setTitle("Voronoi图生成器 - "+savePath);
     }
 }

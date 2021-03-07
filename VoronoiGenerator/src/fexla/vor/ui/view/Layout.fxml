@@ -10,9 +10,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="文件">
             <items>
-                  <MenuItem mnemonicParsing="false" text="读取" />
-                  <MenuItem mnemonicParsing="false" text="保存" />
-                  <MenuItem mnemonicParsing="false" text="保存为..." />
+                  <MenuItem mnemonicParsing="false" onAction="#open" text="读取" />
+                  <MenuItem mnemonicParsing="false" onAction="#save" text="保存" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveAs" text="保存为..." />
               <MenuItem mnemonicParsing="false" onAction="#exportUI" text="导出为图片" />
             </items>
           </Menu>
