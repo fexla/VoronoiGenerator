@@ -44,8 +44,8 @@
                             <bottom>
                                 <ToolBar nodeOrientation="RIGHT_TO_LEFT" prefHeight="60.0" prefWidth="411.0" BorderPane.alignment="CENTER">
                                     <items>
-                                        <Label text="Label" />
-                                        <Slider prefHeight="33.0" prefWidth="192.0" value="50.0" />
+                                        <Label fx:id="ratioLabel" prefWidth="60.0" text="100%" />
+                                        <Slider fx:id="ratioController" prefHeight="33.0" prefWidth="150.0" value="50.0" />
                                     </items>
                                 </ToolBar>
                             </bottom>

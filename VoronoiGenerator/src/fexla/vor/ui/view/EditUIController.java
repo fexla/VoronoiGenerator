@@ -7,10 +7,15 @@ import fexla.vor.ui.item.TextFieldChecker;
 import fexla.vor.ui.model.DiagramModel;
 import fexla.vor.ui.model.ExportModel;
 import fexla.vor.ui.model.LayerModel;
+import fexla.vor.util.Vector2D;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -42,6 +47,10 @@ public class EditUIController {
     private VBox LayerEditBox;
     @FXML
     private Button removeLayerButton;
+    @FXML
+    private Slider ratioController;
+    @FXML
+    private Label ratioLabel;
 
     private Background unSelectedBackgrand;
     private Background selectedBackgrand;
@@ -76,6 +85,16 @@ public class EditUIController {
         imageContainer.heightProperty().addListener((observableValue, o, n) -> imageView.setFitHeight(n.intValue() - 60));
         diagramImage = new DiagramImage(imageView);
         setDm(DiagramModel.getBlankDiagramModel());
+        ratioController.valueProperty().addListener((observableValue, oldValue, newValue) -> {
+            double oldLen = Math.pow(4, (oldValue.doubleValue() - 50) / 50);
+            double len = Math.pow(4, (newValue.doubleValue() - 50) / 50);
+            double newStartX = diagramImage.getStartPoint().x + (oldLen - len) * diagramImage.getPixelNum().x / 2;
+            double newStartY = diagramImage.getStartPoint().y + (oldLen - len) * diagramImage.getPixelNum().y / 2;
+            diagramImage.setStartPoint(new Vector2D(newStartX, newStartY));
+            ratioLabel.setText((int) (1 / len * 100) + "%");
+            diagramImage.setPixelLength(len);
+            dm.update();
+        });
     }
 
     public DiagramImage getDiagramImage() {

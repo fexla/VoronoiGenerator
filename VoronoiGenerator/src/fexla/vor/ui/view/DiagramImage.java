@@ -151,8 +151,8 @@ public class DiagramImage {
         view.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
             double distanceX = event.getX() - MouseX;
             double distanceY = event.getY() - MouseY;
-            startPoint.x -= distanceX;
-            startPoint.y -= distanceY;
+            startPoint.x -= distanceX*pixelLength;
+            startPoint.y -= distanceY*pixelLength;
             MouseX = event.getX();
             MouseY = event.getY();
             view.setImage(generateImage());
