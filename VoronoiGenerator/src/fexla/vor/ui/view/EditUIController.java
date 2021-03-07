@@ -87,7 +87,7 @@ public class EditUIController {
         imageView.setOnScroll(new EventHandler<ScrollEvent>() {
             @Override
             public void handle(ScrollEvent scrollEvent) {
-                double value = ratioController.getValue() - (scrollEvent.getDeltaY()>0?5:-5);
+                double value = ratioController.getValue() - (scrollEvent.getDeltaY() > 0 ? 5 : -5);
                 if (value > 100) value = 100;
                 else if (value < 0) value = 0;
                 ratioController.setValue(value);
@@ -115,7 +115,10 @@ public class EditUIController {
 
     public void setDm(DiagramModel dm) {
         this.dm = dm;
-        dm.setDiagramImage(diagramImage);
+        LayerOverview.getChildren().clear();
+        layerModelMap.clear();
+        LayerButtons.clear();
+        clearEditBox();
         List<LayerModel> lms = dm.getLayerModels();
         for (LayerModel lm : lms) {
             loadLayerButton(lm);
@@ -271,6 +274,7 @@ public class EditUIController {
         layerModelMap.clear();
         LayerButtons.clear();
         clearEditBox();
+        dm.setLayerModels(new ArrayList<>());
         dm.update();
     }
 }
