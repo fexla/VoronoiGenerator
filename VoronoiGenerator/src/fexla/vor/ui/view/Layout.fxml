@@ -16,10 +16,10 @@
               <MenuItem mnemonicParsing="false" onAction="#exportUI" text="导出为图片" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="编辑">
+          <Menu mnemonicParsing="false" onAction="#onEditMenuOpen" onMenuValidation="#onEditMenuOpen" text="编辑">
             <items>
-                  <MenuItem mnemonicParsing="false" text="新建层" />
-              <MenuItem mnemonicParsing="false" text="删除层" />
+                  <MenuItem mnemonicParsing="false" onAction="#newLayer" text="新建层" />
+              <MenuItem fx:id="removeLayerMenuItem" mnemonicParsing="false" onAction="#removeLayer" text="删除层" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">

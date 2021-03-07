@@ -1,12 +1,9 @@
 package fexla.vor.ui.view;
 
-import fexla.vor.ui.Main;
 import fexla.vor.ui.item.ItemChoiceBox;
 import fexla.vor.ui.item.ItemTextField;
 import fexla.vor.ui.item.TextFieldChecker;
-import fexla.vor.ui.model.DiagramModel;
 import fexla.vor.ui.model.ExportModel;
-import fexla.vor.ui.model.LayerModel;
 import fexla.vor.util.Vector2Dint;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,14 +14,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -33,6 +29,9 @@ import java.net.URL;
  * @date ：2021/2/19 22:15
  */
 public class LayoutController {
+    @FXML
+    private MenuItem removeLayerMenuItem;
+
     @FXML
     private void initialize() {
         FXMLLoader loader = new FXMLLoader();
@@ -146,5 +145,20 @@ public class LayoutController {
         exportStage.setTitle("导出");
         exportStage.setScene(scene);
         exportStage.showAndWait();
+    }
+
+    @FXML
+    private void newLayer() {
+        EditUIController.instance.newLayer();
+    }
+
+    @FXML
+    private void removeLayer() {
+        EditUIController.instance.removeSelectedLayer();
+    }
+
+    @FXML
+    private void onEditMenuOpen() {
+        removeLayerMenuItem.setDisable(EditUIController.instance.getRemoveLayerButton().isDisable());
     }
 }

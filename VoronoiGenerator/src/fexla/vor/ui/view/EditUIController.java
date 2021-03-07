@@ -127,6 +127,10 @@ public class EditUIController {
         updateLayerButtonLayout();
     }
 
+    public Button getRemoveLayerButton() {
+        return removeLayerButton;
+    }
+
     public AnchorPane loadLayerButton(LayerModel lm) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("view/LayerButton.fxml"));
@@ -239,7 +243,7 @@ public class EditUIController {
     }
 
     @FXML
-    private void removeSelectedLayer() {
+    public void removeSelectedLayer() {
         AnchorPane removeItem = selectedLayerButton;
         LayerButtons.remove(removeItem);
         LayerOverview.getChildren().remove(removeItem);
@@ -251,7 +255,7 @@ public class EditUIController {
     }
 
     @FXML
-    private void newLayer() {
+    public void newLayer() {
         LayerModel lm = null;
         int location = LayerButtons.size() == 0 ? 0 : LayerButtons.indexOf(selectedLayerButton) + 1;
         if (location == 0) {
