@@ -5,11 +5,8 @@ import fexla.vor.ui.item.Item;
 import fexla.vor.ui.item.ItemTextField;
 import fexla.vor.ui.item.TextFieldChecker;
 import fexla.vor.ui.model.DiagramModel;
-import fexla.vor.ui.model.ExportModel;
 import fexla.vor.ui.model.LayerModel;
 import fexla.vor.util.Vector2D;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -255,5 +252,14 @@ public class EditUIController {
         LayerButtons.remove(b);
         LayerButtons.add(location, b);
         updateLayerButtonLayout();
+    }
+
+    @FXML
+    private void clearLayerList() {
+        LayerOverview.getChildren().clear();
+        layerModelMap.clear();
+        LayerButtons.clear();
+        clearEditBox();
+        dm.update();
     }
 }

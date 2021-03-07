@@ -22,7 +22,12 @@
                                                 <Button fx:id="removeLayerButton" disable="true" mnemonicParsing="false" onAction="#removeSelectedLayer" prefHeight="20.0" prefWidth="20.0" text=" -" />
                                  </children>
                               </HBox>
+                              <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="7.0" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#clearLayerList" text="清除" />
                                       </items>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
                                   </ToolBar>
                               </top>
                      <center>
