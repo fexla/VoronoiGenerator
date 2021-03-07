@@ -192,7 +192,7 @@ public class EditUIController {
                 break;
         }
 
-        if (i != 0 && LayerButtons.get(i - 1).getLayoutY() - pane.getLayoutY() > 0) {
+        if (i != 0 && LayerButtons.get(i - 1).getLayoutY() - pane.getLayoutY() >= 0) {
             AnchorPane m = LayerButtons.get(i - 1);
             LayerButtons.set(i - 1, pane);
             LayerButtons.set(i, m);
