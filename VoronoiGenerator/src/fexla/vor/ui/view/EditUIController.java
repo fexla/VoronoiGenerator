@@ -7,6 +7,7 @@ import fexla.vor.ui.item.TextFieldChecker;
 import fexla.vor.ui.model.DiagramModel;
 import fexla.vor.ui.model.LayerModel;
 import fexla.vor.util.Vector2D;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -15,6 +16,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
@@ -82,6 +84,15 @@ public class EditUIController {
         imageContainer.heightProperty().addListener((observableValue, o, n) -> imageView.setFitHeight(n.intValue() - 60));
         diagramImage = new DiagramImage(imageView);
         setDm(DiagramModel.getBlankDiagramModel());
+        imageView.setOnScroll(new EventHandler<ScrollEvent>() {
+            @Override
+            public void handle(ScrollEvent scrollEvent) {
+                double value = ratioController.getValue() - (scrollEvent.getDeltaY()>0?5:-5);
+                if (value > 100) value = 100;
+                else if (value < 0) value = 0;
+                ratioController.setValue(value);
+            }
+        });
         ratioController.valueProperty().addListener((observableValue, oldValue, newValue) -> {
             double oldLen = Math.pow(4, (oldValue.doubleValue() - 50) / 50);
             double len = Math.pow(4, (newValue.doubleValue() - 50) / 50);
