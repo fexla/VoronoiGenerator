@@ -1,10 +1,9 @@
 package fexla.vor.ui.model;
 
-import com.google.gson.annotations.Expose;
 import fexla.vor.Diagram;
 import fexla.vor.PointRootGenerator;
 import fexla.vor.ui.fun.DataOfColor;
-import fexla.vor.ui.view.DiagramImage;
+import fexla.vor.ui.view.image.DiagramImage;
 
 import java.util.ArrayList;
 import java.util.List;

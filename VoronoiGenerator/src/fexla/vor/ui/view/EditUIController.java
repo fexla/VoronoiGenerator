@@ -6,6 +6,7 @@ import fexla.vor.ui.item.ItemTextField;
 import fexla.vor.ui.item.TextFieldChecker;
 import fexla.vor.ui.model.DiagramModel;
 import fexla.vor.ui.model.LayerModel;
+import fexla.vor.ui.view.image.DiagramImage;
 import fexla.vor.util.Vector2D;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

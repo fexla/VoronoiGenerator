@@ -1,6 +1,6 @@
 package fexla.vor.ui.model;
 
-import fexla.vor.ui.view.DiagramImage;
+import fexla.vor.ui.view.image.DiagramImage;
 import fexla.vor.util.Vector2Dint;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
