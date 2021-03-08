@@ -12,8 +12,8 @@ public class Hash {
 
     public static long hash2d(long a, long b) {
 //        return (p1 + b) * p2 + a;
-        Random r1 = new Random(a), r2 = new Random(b), r3 = new Random(r1.nextInt() ^ r2.nextInt());
-        return r3.nextInt();
+        Random r1 = new Random(a),  r2 = new Random(r1.nextLong() ^ b);
+        return r2.nextLong();
     }
 
 }
