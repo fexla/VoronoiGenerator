@@ -1,14 +1,16 @@
-package fexla.vor.ui.view.image;
+package fexla.vor.ui.view;
 
 import fexla.vor.Diagram;
+import fexla.vor.ui.fun.DataColored;
 import fexla.vor.util.*;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.Cursor;
-import javafx.scene.image.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelWriter;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
-
-import java.nio.IntBuffer;
-
+import javafx.scene.paint.Color;
 
 
 /**
@@ -23,8 +25,6 @@ public class DiagramImage {
     private double pixelLength;//单像素在diagram中的长度
     private int colorLayer;//开始上色的层编号
     private int blockLength;//生成图形每个点占的方格边长（像素）
-    private int[] buffer;
-    private ImageUpdator updator;
 
     private WritableImage image;
 
@@ -36,23 +36,31 @@ public class DiagramImage {
         startPoint = new Vector2D(0, 0);
         pixelLength = 1;
         pixelNum = new Vector2Dint(1, 1);
-        image = new WritableImage(1, 1);
     }
 
     public Image generateImage(Vector2Dint pixelNum, double pixelLength, int blockLength) {
         int width = pixelNum.x;
         int length = pixelNum.y;
-        buffer = new int[width * length];
         image = new WritableImage(width, length);
         if (diagram == null || diagram.getLayerNum() == 0) return image;
         PixelWriter pw = image.getPixelWriter();
-        ImageDrawer drawer = new ImageDrawer(buffer, diagram, startPoint, new Vector2Dint(0, 0), pixelNum, pixelLength, blockLength);
-        drawer.draw();
-        WritablePixelFormat<IntBuffer> pixelFormat = PixelFormat.getIntArgbPreInstance();
-        pw.setPixels(0, 0, width, length, pixelFormat, buffer, 0, width);
+        for (int y = 0; y <= length - blockLength; y += blockLength) {
+            for (int x = 0; x <= width - blockLength; x += blockLength) {
+                DataColored res = (DataColored) diagram.getPointData(new Vector2D(startPoint.x + x * pixelLength, startPoint.y + y * pixelLength), 0);
+
+                Color color = null;
+                if (res == null) color = Color.RED;
+                else color = res.getColor();
+                for (int i = 0; i < blockLength; i++) {
+                    for (int j = 0; j < blockLength; j++) {
+                        pw.setColor(x + i, y + j, color);
+
+                    }
+                }
+            }
+        }
         return image;
     }
-
 
     public Image generateImage() {
         return generateImage(pixelNum, pixelLength, blockLength);
@@ -143,8 +151,8 @@ public class DiagramImage {
         view.addEventHandler(MouseEvent.MOUSE_DRAGGED, event -> {
             double distanceX = event.getX() - MouseX;
             double distanceY = event.getY() - MouseY;
-            startPoint.x -= distanceX * pixelLength;
-            startPoint.y -= distanceY * pixelLength;
+            startPoint.x -= distanceX*pixelLength;
+            startPoint.y -= distanceY*pixelLength;
             MouseX = event.getX();
             MouseY = event.getY();
             view.setImage(generateImage());
