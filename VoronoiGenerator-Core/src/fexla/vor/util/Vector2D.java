@@ -9,7 +9,7 @@ import java.util.Objects;
  * @description：2维向量
  * @date ：2021/2/8 18:19
  */
-public class Vector2D {
+public class Vector2D implements Cloneable{
     public double x;
     public double y;
 
@@ -30,10 +30,6 @@ public class Vector2D {
     @Override
     public int hashCode() {
         return Objects.hash(x, y);
-    }
-
-    public Vector2D copy() {
-        return new Vector2D(x, y);
     }
 
     //距离
@@ -59,5 +55,10 @@ public class Vector2D {
 
     public static Vector2Dint d2i(Vector2D v) {
         return new Vector2Dint((int) v.x, (int) v.y);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

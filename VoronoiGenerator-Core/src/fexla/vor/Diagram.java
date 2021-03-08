@@ -3,12 +3,14 @@ package fexla.vor;
 import fexla.vor.util.Vector2D;
 import fexla.vor.util.Vector2Dint;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 /**
  * @author ：fexla
  * @description：Voronoi图
  * @date ：2021/2/8 18:18
  */
-public class Diagram {
+public class Diagram implements Cloneable {
     private long seed;
     private RootLayer layers[];
     private int layerNum = -1;//层级数量，未生成时为-1
@@ -28,8 +30,8 @@ public class Diagram {
     //返回该点最近的根点数据
     public Data getPointData(Vector2D pos, int level) {
 
-        PointRoot root=getClosestRoot(pos, level);
-        if (root==null)return null;
+        PointRoot root = getClosestRoot(pos, level);
+        if (root == null) return null;
         return root.getData();
     }
 
@@ -73,5 +75,15 @@ public class Diagram {
 
     public RootLayer getLayer(int i) {
         return layers[i];
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Diagram obj = (Diagram) super.clone();
+        obj.layers = new RootLayer[layers.length];
+        for (int i = 0; i < layers.length; i++) {
+            obj.layers[i] = (RootLayer) layers[i].clone();
+        }
+        return obj;
     }
 }

@@ -7,7 +7,7 @@ import java.util.Objects;
  * @description：使用int记录数值的2维向量
  * @date ：2021/2/8 18:32
  */
-public class Vector2Dint {
+public class Vector2Dint implements Cloneable{
     public int x;
     public int y;
 
@@ -29,12 +29,13 @@ public class Vector2Dint {
         return (int) Hash.hash2d(x, y);
     }
 
-    public Vector2Dint copy() {
-        return new Vector2Dint(x, y);
-    }
-
     public static Vector2D i2d(Vector2Dint v) {
         return new Vector2D(v.x, v.y);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
 

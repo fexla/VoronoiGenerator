@@ -11,7 +11,7 @@ import java.util.Map;
  * @description：同一层的根点的集合
  * @date ：2021/2/8 18:47
  */
-public class RootLayer {
+public class RootLayer implements Cloneable {
     private int unitLenth;
     private int level;
     private long seed;
@@ -32,17 +32,22 @@ public class RootLayer {
 
     //得到对应的root周围一共9个root
     public PointRoot[] getRootSq(Vector2D pos) {
-        Vector2D xpos = pos.copy();
+        Vector2D xpos = null;
+        try {
+            xpos = (Vector2D) pos.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
         xpos.x /= unitLenth;
-        if (xpos.x>0) {
+        if (xpos.x > 0) {
             xpos.x -= 1;
-        }else{
+        } else {
             xpos.x -= 2;
         }
         xpos.y /= unitLenth;
-        if (xpos.y>0) {
+        if (xpos.y > 0) {
             xpos.y -= 1;
-        }else{
+        } else {
             xpos.y -= 2;
         }
         PointRoot[] res = new PointRoot[9];
@@ -74,5 +79,12 @@ public class RootLayer {
 
     public void setType(CalculateType type) {
         this.type = type;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        RootLayer obj = (RootLayer) super.clone();
+        obj.roots = new HashMap<>();
+        return obj;
     }
 }

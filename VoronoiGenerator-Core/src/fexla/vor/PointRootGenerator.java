@@ -10,7 +10,7 @@ import java.util.Random;
  * @description：根点生成器。
  * @date ：2021/2/8 19:44
  */
-public class PointRootGenerator {
+public class PointRootGenerator implements Cloneable {
     private Diagram diagram;
     private RootDataGenerator dataGenerator;
 
@@ -37,7 +37,12 @@ public class PointRootGenerator {
     }
 
     private Vector2Dint getPosInDiagram(Vector2Dint pos, long seed, int unitLength) {
-        Vector2Dint posInDiagram = pos.copy();
+        Vector2Dint posInDiagram = null;
+        try {
+            posInDiagram = (Vector2Dint) pos.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
 //        Random ran = new Random((seed ^ pos.x) % (1 << 16) + (seed ^ pos.y) << 16);
         Random ran = new Random(pos.hashCode()^seed);
         posInDiagram.x *= unitLength;
@@ -54,5 +59,10 @@ public class PointRootGenerator {
 
     public void setDiagram(Diagram diagram) {
         this.diagram = diagram;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
