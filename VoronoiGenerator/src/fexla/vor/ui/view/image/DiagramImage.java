@@ -8,7 +8,8 @@ import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
 
 import java.nio.IntBuffer;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -23,7 +24,7 @@ public class DiagramImage {
     private double pixelLength;//单像素在diagram中的长度
     private int colorLayer;//开始上色的层编号
     private int blockLength;//生成图形每个点占的方格边长（像素）
-    private int[] buffer;
+    private Integer[] buffer;
     private ImageUpdator updator;
 
     private WritableImage image;
@@ -42,14 +43,18 @@ public class DiagramImage {
     public Image generateImage(Vector2Dint pixelNum, double pixelLength, int blockLength) {
         int width = pixelNum.x;
         int length = pixelNum.y;
-        buffer = new int[width * length];
+        buffer = new Integer[width * length];
         image = new WritableImage(width, length);
         if (diagram == null || diagram.getLayerNum() == 0) return image;
         PixelWriter pw = image.getPixelWriter();
-        ImageDrawer drawer = new ImageDrawer(buffer, diagram, startPoint, new Vector2Dint(0, 0), pixelNum, pixelLength, blockLength);
+        ImageDrawer drawer = new ImageDrawer(buffer, diagram, startPoint, new Vector2Dint(0, 0), pixelNum, pixelLength, blockLength, width);
         drawer.draw();
         WritablePixelFormat<IntBuffer> pixelFormat = PixelFormat.getIntArgbPreInstance();
-        pw.setPixels(0, 0, width, length, pixelFormat, buffer, 0, width);
+        int[] array = new int[buffer.length];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = buffer[i];
+        }
+        pw.setPixels(0, 0, width, length, pixelFormat, array, 0, width);
         return image;
     }
 
@@ -123,7 +128,7 @@ public class DiagramImage {
         pixelNum = new Vector2Dint(width, length);
         ChangeListener<Number> imageViewListener = (observableValue, number, t1) -> {
             setPixelNum((int) view.getFitWidth(), (int) view.getFitHeight());
-            view.setImage(generateImage());
+            updateImage();
         };
         view.fitWidthProperty().addListener(imageViewListener);
         view.fitHeightProperty().addListener(imageViewListener);
@@ -147,12 +152,48 @@ public class DiagramImage {
             startPoint.y -= distanceY * pixelLength;
             MouseX = event.getX();
             MouseY = event.getY();
-            view.setImage(generateImage());
+//            view.setImage(generateImage());
+            updateImage();
         });
     }
 
+    private static final int threadBlockLength = 256;
+
     public void updateImage() {
-        if (view != null)
-            view.setImage(generateImage());
+//        if (view != null)
+//            view.setImage(generateImage());
+        if (updator != null) {
+            updator.setCanceled(true);
+        }
+        int width = pixelNum.x;
+        int length = pixelNum.y;
+        if (buffer == null || buffer.length != width * length) {
+            buffer = new Integer[width * length];
+            for (int i = 0; i < buffer.length; i++) {
+                buffer[i] = 0;
+            }
+        }
+        image = new WritableImage(width, length);
+        int[] array = new int[buffer.length];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = buffer[i];
+        }
+        updator = new ImageUpdator(buffer, view, pixelNum);
+        List<ImageBlockThread> threads = new ArrayList<>();
+        for (int sy = 0; sy < length; sy += threadBlockLength) {
+            for (int sx = 0; sx < width; sx += threadBlockLength) {
+                ImageDrawer drawer = null;
+                try {
+                    int w = width - sx - 1 > threadBlockLength ? threadBlockLength : width - sx - 1;
+                    int l = length - sy - 1 > threadBlockLength ? threadBlockLength : length - sy - 1;
+                    drawer = new ImageDrawer(buffer, (Diagram) diagram.clone(), (Vector2D) startPoint.clone(), new Vector2Dint(sx, sy), new Vector2Dint(w, l), pixelLength, blockLength, width);
+                } catch (CloneNotSupportedException e) {
+                    e.printStackTrace();
+                }
+                threads.add(new ImageBlockThread(drawer));
+            }
+        }
+        updator.setThreads(threads);
+        new Thread(updator).start();
     }
 }

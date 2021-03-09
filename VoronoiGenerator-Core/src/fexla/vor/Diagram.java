@@ -78,7 +78,7 @@ public class Diagram implements Cloneable {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         Diagram obj = (Diagram) super.clone();
         obj.layers = new RootLayer[layers.length];
         for (int i = 0; i < layers.length; i++) {

@@ -24,7 +24,14 @@ public class RootLayer implements Cloneable {
         Vector2Dint xpos = Vector2D.d2i(pos);
         xpos.x /= unitLenth;
         xpos.y /= unitLenth;
-        if (roots.containsKey(xpos)) return roots.get(xpos);
+        if (roots.containsKey(xpos)) {
+            PointRoot res = roots.get(xpos);
+            if (res != null)
+                return res;
+            res= generator.gen(xpos, seed, level, unitLenth);
+            roots.replace(xpos,res);
+            return res;
+        }
         PointRoot root = generator.gen(xpos, seed, level, unitLenth);
         roots.put(xpos, root);
         return root;
