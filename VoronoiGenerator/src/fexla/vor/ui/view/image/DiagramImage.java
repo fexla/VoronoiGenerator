@@ -1,11 +1,15 @@
 package fexla.vor.ui.view.image;
 
 import fexla.vor.Diagram;
+import fexla.vor.ui.fun.DataColored;
+import fexla.vor.ui.utl.ImageUtl;
 import fexla.vor.util.*;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.scene.Cursor;
 import javafx.scene.image.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 import java.nio.IntBuffer;
 import java.util.ArrayList;
@@ -21,11 +25,12 @@ public class DiagramImage {
     private Diagram diagram;
     private Vector2D startPoint;
     private Vector2Dint pixelNum;//生成的像素长宽
+    private volatile boolean pixelNumChange = true;
     private double pixelLength;//单像素在diagram中的长度
     private int colorLayer;//开始上色的层编号
     private int blockLength;//生成图形每个点占的方格边长（像素）
-    private Integer[] buffer;
-    private ImageUpdator updator;
+    //    private Integer[] buffer;
+
 
     private WritableImage image;
 
@@ -43,18 +48,26 @@ public class DiagramImage {
     public Image generateImage(Vector2Dint pixelNum, double pixelLength, int blockLength) {
         int width = pixelNum.x;
         int length = pixelNum.y;
-        buffer = new Integer[width * length];
+        int[] buffer = new int[width * length];
         image = new WritableImage(width, length);
         if (diagram == null || diagram.getLayerNum() == 0) return image;
         PixelWriter pw = image.getPixelWriter();
-        ImageDrawer drawer = new ImageDrawer(buffer, diagram, startPoint, new Vector2Dint(0, 0), pixelNum, pixelLength, blockLength, width);
-        drawer.draw();
-        WritablePixelFormat<IntBuffer> pixelFormat = PixelFormat.getIntArgbPreInstance();
-        int[] array = new int[buffer.length];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = buffer[i];
+        for (int y = 0; y <= length - blockLength; y += blockLength) {
+            for (int x = 0; x <= width - blockLength; x += blockLength) {
+                DataColored res = (DataColored) diagram.getPointData(new Vector2D(startPoint.x + x * pixelLength, startPoint.y + y * pixelLength), 0);
+
+                Color color = null;
+                if (res == null) color = Color.RED;
+                else color = res.getColor();
+                for (int i = 0; i < blockLength; i++) {
+                    for (int j = 0; j < blockLength; j++) {
+                        buffer[x + i + (y + j) * pixelNum.x] = ImageUtl.toInt(color);
+                    }
+                }
+            }
         }
-        pw.setPixels(0, 0, width, length, pixelFormat, array, 0, width);
+        WritablePixelFormat<IntBuffer> pixelFormat = PixelFormat.getIntArgbPreInstance();
+        pw.setPixels(0, 0, width, length, pixelFormat, buffer, 0, width);
         return image;
     }
 
@@ -65,7 +78,7 @@ public class DiagramImage {
 
     public void setPixelNum(int width, int length) {
         this.pixelNum = new Vector2Dint(width, length);
-
+        pixelNumChange = true;
     }
 
     public Diagram getDiagram() {
@@ -157,43 +170,41 @@ public class DiagramImage {
         });
     }
 
-    private static final int threadBlockLength = 256;
+    private static final int sideLength = 64;
 
     public void updateImage() {
-//        if (view != null)
-//            view.setImage(generateImage());
-        if (updator != null) {
-            updator.setCanceled(true);
+        Integer width, length;
+        width = pixelNum.x;
+        length = pixelNum.y;
+        ImageTaskScheduler scheduler = ImageTaskScheduler.instance;
+        if (scheduler == null) {
+            scheduler = new ImageTaskScheduler();
+            Thread thread = new Thread(scheduler);
+            thread.setName("scheduler thread");
+            thread.setDaemon(true);
+            thread.start();
         }
-        int width = pixelNum.x;
-        int length = pixelNum.y;
-        if (buffer == null || buffer.length != width * length) {
-            buffer = new Integer[width * length];
-            for (int i = 0; i < buffer.length; i++) {
-                buffer[i] = 0;
-            }
+        if (pixelNumChange) {
+            scheduler.setOnTaskFinished(buffer ->
+                    Platform.runLater(() -> {
+                                image = new WritableImage(width, length);
+                                PixelWriter pw = image.getPixelWriter();
+                                WritablePixelFormat<IntBuffer> pixelFormat = PixelFormat.getIntArgbPreInstance();
+                                synchronized (buffer) {
+                                    if (buffer.length != width * length) return;
+                                    pw.setPixels(0, 0, width, length, pixelFormat, buffer, 0, width);
+                                    view.setImage(image);
+                                }
+                            }
+                    ));
+            pixelNumChange = false;
         }
-        image = new WritableImage(width, length);
-        int[] array = new int[buffer.length];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = buffer[i];
+        try {
+            scheduler.setNextTask(
+                    new ImageGenTask((Vector2Dint) pixelNum.clone(), (Vector2D) startPoint.clone(), diagram,
+                            pixelLength, blockLength, sideLength));
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
         }
-        updator = new ImageUpdator(buffer, view, pixelNum);
-        List<ImageBlockThread> threads = new ArrayList<>();
-        for (int sy = 0; sy < length; sy += threadBlockLength) {
-            for (int sx = 0; sx < width; sx += threadBlockLength) {
-                ImageDrawer drawer = null;
-                try {
-                    int w = width - sx - 1 > threadBlockLength ? threadBlockLength : width - sx - 1;
-                    int l = length - sy - 1 > threadBlockLength ? threadBlockLength : length - sy - 1;
-                    drawer = new ImageDrawer(buffer, (Diagram) diagram.clone(), (Vector2D) startPoint.clone(), new Vector2Dint(sx, sy), new Vector2Dint(w, l), pixelLength, blockLength, width);
-                } catch (CloneNotSupportedException e) {
-                    e.printStackTrace();
-                }
-                threads.add(new ImageBlockThread(drawer));
-            }
-        }
-        updator.setThreads(threads);
-        new Thread(updator).start();
     }
 }

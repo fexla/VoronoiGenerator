@@ -39,7 +39,8 @@ public class Vector2D implements Cloneable{
         b = v1.y - v2.y;
         switch (type) {
             case EUCLIDEAN:
-                return Math.sqrt(a * a + b * b);
+//                return Math.sqrt(a * a + b * b);
+                return a * a + b * b;
             case CHEBYSHEV:
                 return a > b ? a : b;
             case MANHATTAN:

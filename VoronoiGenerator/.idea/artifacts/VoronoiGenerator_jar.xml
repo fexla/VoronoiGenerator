@@ -4,6 +4,7 @@
     <root id="archive" name="VoronoiGenerator.jar">
       <element id="module-output" name="VoronoiGenerator" />
       <element id="library" level="project" name="VoronoiGenerator-Core" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
     </root>
   </artifact>
 </component>

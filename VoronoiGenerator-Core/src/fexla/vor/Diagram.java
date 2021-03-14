@@ -56,6 +56,7 @@ public class Diagram implements Cloneable {
             }
         }
 //        if (min < 3&&level==0) return null;
+//        closest = roots[0];
         return closest;
 
     }

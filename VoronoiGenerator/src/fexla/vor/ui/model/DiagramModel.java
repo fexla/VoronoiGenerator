@@ -101,7 +101,7 @@ public class DiagramModel {
 
     public static DiagramModel getBlankDiagramModel() {
         DiagramModel dm = new DiagramModel();
-        dm.setBlockLength(5);
+        dm.setBlockLength(3);
         for (int i = 0; i < 3; i++) {
             LayerModel lm = new LayerModel((i + 1) * (i + 1) * 10);
             lm.setDiagramModel(dm);
