@@ -20,6 +20,9 @@ public class DiagramModel {
     private List<LayerModel> layerModels;
     private transient DiagramImage diagramImage;
 
+    private boolean changed = true;
+    private Diagram lastDiagram;
+
     public DiagramModel() {
         seed = "fexla".hashCode();
         layerModels = new ArrayList<>();
@@ -31,6 +34,7 @@ public class DiagramModel {
 
     public void setSeed(long seed) {
         this.seed = seed;
+        changed();
     }
 
     public int getColorLayer() {
@@ -39,6 +43,7 @@ public class DiagramModel {
 
     public void setColorLayer(int colorLayer) {
         this.colorLayer = colorLayer;
+        changed();
     }
 
     public int getBlockLength() {
@@ -47,6 +52,7 @@ public class DiagramModel {
 
     public void setBlockLength(int blockLength) {
         this.blockLength = blockLength;
+        changed();
     }
 
     public DiagramImage getDiagramImage() {
@@ -63,6 +69,11 @@ public class DiagramModel {
 
     public void setLayerModels(List<LayerModel> layerModels) {
         this.layerModels = layerModels;
+        changed();
+    }
+
+    protected void changed() {
+        changed = true;
     }
 
     public int size() {
@@ -70,10 +81,12 @@ public class DiagramModel {
     }
 
     public boolean add(LayerModel layerModel) {
+        changed();
         return layerModels.add(layerModel);
     }
 
     public boolean remove(Object o) {
+        changed();
         return layerModels.remove(o);
     }
 
@@ -92,7 +105,13 @@ public class DiagramModel {
         } else {
             generator = new PointRootGenerator((vector2Dint, seed) -> new DataOfColor(colorLayer, seed));
         }
-        Diagram diagram = new Diagram(seed, generator, unitLen);
+        Diagram diagram = null;
+        if (changed)
+             diagram = new Diagram(seed, generator, unitLen);
+        else
+            diagram=lastDiagram;
+        changed=false;
+        lastDiagram=diagram;
         diagramImage.setDiagram(diagram);
         diagramImage.setColorLayer(colorLayer);
         diagramImage.setBlockLength(blockLength);

@@ -82,8 +82,8 @@ public class ImageTaskScheduler implements Runnable {
             for (int i = 0; i < pixelNum.y; i += task.getSideLength()) {
                 for (int j = 0; j < pixelNum.x; j += task.getSideLength()) {
                     int width, length;
-                    width = pixelNum.x  - j < task.getSideLength() ? pixelNum.x  - j : task.getSideLength();
-                    length = pixelNum.y  - i < task.getSideLength() ? pixelNum.y  - i : task.getSideLength();
+                    width = pixelNum.x - j < task.getSideLength() ? pixelNum.x - j : task.getSideLength();
+                    length = pixelNum.y - i < task.getSideLength() ? pixelNum.y - i : task.getSideLength();
                     ImageBlockBuffer blockBuffer = new ImageBlockBuffer(new Vector2Dint(width, length));
                     BlockWorker worker = null;
 
@@ -91,9 +91,12 @@ public class ImageTaskScheduler implements Runnable {
                         Vector2D startPoint = (Vector2D) task.getStartPoint().clone();
                         startPoint.x += j * task.getPixelLength();
                         startPoint.y += i * task.getPixelLength();
-                        Diagram diagramClone = (Diagram) task.getDiagram().clone();
-                        synchronized (diagramClone) {
-                            worker = new BlockWorker(blockBuffer, lastBuffer, task, diagramClone, startPoint, j, i);
+                        Diagram diagram = task.getDiagram();
+                        synchronized (diagram) {
+                            if (lastTask!=null&&lastTask.getDiagram() == diagram)
+                                worker = new BlockWorker(blockBuffer, lastBuffer, task, diagram, startPoint, j, i);
+                            else
+                                worker = new BlockWorker(blockBuffer, null, task, diagram, startPoint, j, i);
                         }
                         runnings.add(worker);
                     } catch (CloneNotSupportedException e) {

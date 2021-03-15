@@ -16,8 +16,8 @@ public class LayerModel {
     private transient DiagramModel diagramModel;
 
     public LayerModel(int unitLength) {
-        this.unitLength=unitLength;
-        specialPoints=new ArrayList<>();
+        this.unitLength = unitLength;
+        specialPoints = new ArrayList<>();
     }
 
     public int getLevel() {
@@ -26,6 +26,7 @@ public class LayerModel {
 
     public void setLevel(int level) {
         this.level = level;
+        changed();
     }
 
     public String getName() {
@@ -50,7 +51,12 @@ public class LayerModel {
 
     public void setUnitLength(int unitLength) {
         this.unitLength = unitLength;
+        changed();
         diagramModel.update();
+    }
+
+    private void changed() {
+        diagramModel.changed();
     }
 
     public List<PointModel> getSpecialPoints() {
