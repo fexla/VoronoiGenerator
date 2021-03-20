@@ -72,6 +72,10 @@ public class DiagramModel {
         changed();
     }
 
+    public void setLastDiagramNull() {
+        lastDiagram = null;
+    }
+
     protected void changed() {
         changed = true;
     }
@@ -106,12 +110,12 @@ public class DiagramModel {
             generator = new PointRootGenerator((vector2Dint, seed) -> new DataOfColor(colorLayer, seed));
         }
         Diagram diagram = null;
-        if (changed)
-             diagram = new Diagram(seed, generator, unitLen);
+        if (changed || lastDiagram == null)
+            diagram = new Diagram(seed, generator, unitLen);
         else
-            diagram=lastDiagram;
-        changed=false;
-        lastDiagram=diagram;
+            diagram = lastDiagram;
+        changed = false;
+        lastDiagram = diagram;
         diagramImage.setDiagram(diagram);
         diagramImage.setColorLayer(colorLayer);
         diagramImage.setBlockLength(blockLength);

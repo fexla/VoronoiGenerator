@@ -1,6 +1,7 @@
 package fexla.vor.ui.view.image;
 
 import fexla.vor.Diagram;
+import fexla.vor.ui.view.EditUIController;
 import fexla.vor.util.Vector2D;
 import fexla.vor.util.Vector2Dint;
 
@@ -25,6 +26,8 @@ public class ImageTaskScheduler implements Runnable {
     private volatile OnTaskFinished onTaskFinished;
 
     private List<BlockWorker> runnings;
+
+    private int emptyLoopCount;
 
     ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 
@@ -61,6 +64,7 @@ public class ImageTaskScheduler implements Runnable {
     @Override
     public void run() {
         instance = this;
+        emptyLoopCount = 0;
         while (!cancel) {
             try {
                 Thread.sleep(10);
@@ -69,11 +73,19 @@ public class ImageTaskScheduler implements Runnable {
             }
             Thread.yield();
             if (currentTask == null) {
-                if (nextTask == null)
+                if (nextTask == null) {
+                    if (++emptyLoopCount == 10) {
+                        EditUIController.instance.getDm().setLastDiagramNull();
+                        System.gc();
+                        System.out.println("gc");
+                        emptyLoopCount = 11;
+                    }
                     continue;
+                }
                 currentTask = nextTask;
                 nextTask = null;
             }
+            emptyLoopCount = 0;
             runnings = new ArrayList<>();
             ImageGenTask task = currentTask;
             Vector2Dint pixelNum = task.getPixelNum();
@@ -93,7 +105,7 @@ public class ImageTaskScheduler implements Runnable {
                         startPoint.y += i * task.getPixelLength();
                         Diagram diagram = task.getDiagram();
                         synchronized (diagram) {
-                            if (lastTask!=null&&lastTask.getDiagram() == diagram)
+                            if (lastTask != null && lastTask.getDiagram() == diagram)
                                 worker = new BlockWorker(blockBuffer, lastBuffer, task, diagram, startPoint, j, i);
                             else
                                 worker = new BlockWorker(blockBuffer, null, task, diagram, startPoint, j, i);
