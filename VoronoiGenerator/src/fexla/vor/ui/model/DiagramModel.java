@@ -21,7 +21,7 @@ public class DiagramModel {
     private transient DiagramImage diagramImage;
 
     private boolean changed = true;
-    private Diagram lastDiagram;
+    private transient Diagram lastDiagram;
 
     public DiagramModel() {
         seed = "fexla".hashCode();
