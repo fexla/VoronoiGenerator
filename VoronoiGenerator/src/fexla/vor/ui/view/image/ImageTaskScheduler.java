@@ -74,10 +74,9 @@ public class ImageTaskScheduler implements Runnable {
             Thread.yield();
             if (currentTask == null) {
                 if (nextTask == null) {
-                    if (++emptyLoopCount == 10) {
+                    if (emptyLoopCount<10&&++emptyLoopCount == 10) {
                         EditUIController.instance.getDm().setLastDiagramNull();
                         System.gc();
-                        System.out.println("gc");
                         emptyLoopCount = 11;
                     }
                     continue;
@@ -106,9 +105,9 @@ public class ImageTaskScheduler implements Runnable {
                         Diagram diagram = task.getDiagram();
                         synchronized (diagram) {
                             if (lastTask != null && lastTask.getDiagram() == diagram)
-                                worker = new BlockWorker(blockBuffer, lastBuffer, task, diagram, startPoint, j, i);
+                                worker = new BlockWorker(blockBuffer, lastBuffer, task, (Diagram) diagram.clone(), startPoint, j, i);
                             else
-                                worker = new BlockWorker(blockBuffer, null, task, diagram, startPoint, j, i);
+                                worker = new BlockWorker(blockBuffer, null, task, (Diagram) diagram.clone(), startPoint, j, i);
                         }
                         runnings.add(worker);
                     } catch (CloneNotSupportedException e) {
