@@ -123,6 +123,7 @@ public class EditUIController {
         List<LayerModel> lms = dm.getLayerModels();
         for (LayerModel lm : lms) {
             loadLayerButton(lm);
+            lm.setDiagramModel(dm);
         }
         dm.setDiagramImage(diagramImage);
         updateLayerButtonLayout();
